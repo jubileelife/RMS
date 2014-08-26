@@ -481,7 +481,7 @@ public class RequestDetails implements Serializable {
                     String sqlReq = "Update SSR_REQUEST_INITIATE set REQUEST_STATUS = " + reqStatus + "  where request_id = " + requestId + " ";
                     Adder add = new Adder();
                     String stts = add.ins(sqlReq);
-                    errorMesg=null;
+                    errorMesg = null;
                     reqStatus = null;
                     reqRemarks = null;
                     reqFileAttached = null;
@@ -525,7 +525,7 @@ public class RequestDetails implements Serializable {
                 Adder ad = new Adder();
                 String sts = ad.ins(sql);
                 if (sts.equals("Y")) {
-                    errorMesg=null;
+                    errorMesg = null;
                     reqStatus = null;
                     reqRemarks = null;
                     reqFileAttached = null;

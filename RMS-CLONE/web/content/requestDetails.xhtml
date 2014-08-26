@@ -644,7 +644,7 @@
                                 </p:dataTable>
 
 
-                                        <p:remoteCommand name="AutoRunMethod_reqDetdd" action="#{request_task.redirectRequestTaskDetail(req_Assignment.assignmentScreenReqId,req_Assignment.assignmentAssignId)}" update="reqTaskDetailTable" autoRun="true" />
+                                <p:remoteCommand name="AutoRunMethod_reqDetdd" action="#{request_task.redirectRequestTaskDetail(req_Assignment.assignmentScreenReqId,req_Assignment.assignmentAssignId,req_Assignment.assignmentAssignedToName)}" update="reqTaskDetailTable" autoRun="true" />
                 
                                         <p:growl id="messages" showDetail="true"/>
 

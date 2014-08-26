@@ -86,6 +86,7 @@ public class requestAssignment implements Serializable {
     private String assignmentScreenApproveBy;
     public String assignmentAssignId;
     public String assignmentAssignName;
+    public String assignmentAssignedToName;
     public String assignmentreqtargetdate;
 
     private String solutionTxt = "Please enter the Solution.";
@@ -121,6 +122,14 @@ public class requestAssignment implements Serializable {
 
         updateAssignSelectFields();
 
+    }
+
+    public String getAssignmentAssignedToName() {
+        return assignmentAssignedToName;
+    }
+
+    public void setAssignmentAssignedToName(String assignmentAssignedToName) {
+        this.assignmentAssignedToName = assignmentAssignedToName;
     }
     
     public String getAssignmentScreenReqStatusID() {
@@ -557,8 +566,8 @@ public class requestAssignment implements Serializable {
 
             String sql = null;
             if ("2".equals((String) session.getAttribute("role"))) {
-                sql = "select a.REQUEST_ID,b.REQUEST_TYPE,to_char(a.REQUEST_DATE,'dd-mm-yyyy HH12:mi:ss am'),c.user_name,a.REQUEST_TITLE,a.APPROVED_BY,d.SERVICE_DESK_ID from SSR_REQUEST_INITIATE a, SSR_REQUEST_TYPE b, SSR_LOGIN c,SSR_SERVICE_ASSIGNMENT \n"
-                        + " d where APPROVAL_REQUIRED IN ( 0,2 ) and a.request_id = d.request_id(+) and d.ASSIGNED_TO = '" + sessionUserId + "'  and a.requester = c.user_id  and a.request_type = b.id   order by REQUEST_ID desc  ";
+                sql = "select distinct a.REQUEST_ID,b.REQUEST_TYPE,to_char(a.REQUEST_DATE,'dd-mm-yyyy HH12:mi:ss am'),c.user_name,a.REQUEST_TITLE,a.APPROVED_BY,d.SERVICE_DESK_ID from SSR_REQUEST_INITIATE a, SSR_REQUEST_TYPE b, SSR_LOGIN c,SSR_SERVICE_ASSIGNMENT \n"
+                        + " d , ssr_service_task t where APPROVAL_REQUIRED IN ( 0,2 ) and a.request_id = d.request_id(+) and d.service_desk_id =  t.service_desk_id(+) and (d.ASSIGNED_TO = '" + sessionUserId + "' or t.ASSIGNED_TO LIKE '%" + sessionUsername + "%')  and a.requester = c.user_id  and a.request_type = b.id   order by REQUEST_ID desc  ";
             } else {
                 sql = "select a.REQUEST_ID,b.REQUEST_TYPE,to_char(a.REQUEST_DATE,'dd-mm-yyyy HH12:mi:ss am'),c.user_name,a.REQUEST_TITLE,a.APPROVED_BY,d.SERVICE_DESK_ID from SSR_REQUEST_INITIATE a, SSR_REQUEST_TYPE b, SSR_LOGIN c,SSR_SERVICE_ASSIGNMENT d where APPROVAL_REQUIRED IN ( 0,2 )  "
                         + " and a.requester = c.user_id and a.request_type = b.id and a.request_id = d.request_id(+)  order by REQUEST_ID desc  ";
@@ -570,7 +579,8 @@ public class requestAssignment implements Serializable {
             while (rs.next()) {
 
                 if ("2".equals((String) session.getAttribute("role"))) {
-                    sqlMax = "select Service_desk_id,CATEGORY_CODE, (select user_name from ssr_login c where c.user_id =  ASSIGNED_TO ) as m from SSR_SERVICE_ASSIGNMENT where SERVICE_DESK_ID = " + rs.getString(7) + " and ASSIGNED_TO = " + sessionUserId + " ";
+                    sqlMax = "select distinct a.Service_desk_id,a.CATEGORY_CODE, nvl((select user_name from ssr_login c where c.user_id =  a.ASSIGNED_TO ),(select user_name from ssr_login c where c.user_id =  t.ASSIGNED_TO )) as m from SSR_SERVICE_ASSIGNMENT a, ssr_service_task t where a.SERVICE_DESK_ID = " + rs.getString(7) + " and (a.ASSIGNED_TO = '" + sessionUserId + "' or t.ASSIGNED_TO LIKE '%" + sessionUsername + "%') ";
+                    //System.out.println("Sql: " + sqlMax);
                 } else {
                     sqlMax = "select Service_desk_id,CATEGORY_CODE,(select user_name from ssr_login c where c.user_id = ASSIGNED_TO ) as m from SSR_SERVICE_ASSIGNMENT where SERVICE_DESK_ID = " + rs.getString(7) + "  ";
                 }
@@ -1060,6 +1070,7 @@ public class requestAssignment implements Serializable {
         assignmentScreenReqId = clickedItem.getReqId();
         assignmentAssignName = clickedItem.getReqMaxCategory();
         assignmentAssignId = clickedItem.getReqAssignmentId();
+        assignmentAssignedToName = clickedItem.getReqMaxAssign();
         assignmentScreenRequester = resultSet[1][0];
         assignmentScreenReqDate = resultSet[1][1];
         assignmentScreenReqType = resultSet[1][2];

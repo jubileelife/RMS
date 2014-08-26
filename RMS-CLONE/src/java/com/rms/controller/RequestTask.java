@@ -294,11 +294,11 @@ public class RequestTask implements Serializable {
         setTaskTabIndex(0);
     }
 
-    public void redirectRequestTaskDetail(String reqID, String reqAssignId) {
+    public void redirectRequestTaskDetail(String reqID, String reqAssignId,String reqAssignName) {
         setTaskTabIndex(0);
         if (reqAssignId == null || reqAssignId.equals("") || reqID == null || reqID.equals("")) {
         } else {
-            updateTaskDataTable(reqID, reqAssignId);
+            updateTaskDataTable(reqID, reqAssignId,reqAssignName);
         }
     }
 
@@ -325,7 +325,7 @@ public class RequestTask implements Serializable {
 //        }
     }
 
-    public List<reqTaskDtList> updateTaskDataTable(String reqID, String reqAssignId) {
+    public List<reqTaskDtList> updateTaskDataTable(String reqID, String reqAssignId,String reqAssignName) {
         int i = 0;
         int counts = 0;
         try {
@@ -338,13 +338,25 @@ public class RequestTask implements Serializable {
             stt = null;
             stt = dbc2.getConnection(false).createStatement();
             ResultSet rss = null;
+            String sqle="";
+            if(sessionUsername.equals(reqAssignName) || sessionUsername == reqAssignName ){
             String sql = "select count(*) as count from SSR_SERVICE_TASK where REQUEST_ID = " + reqID + " and SERVICE_DESK_ID = " + reqAssignId + " ";
             rss = st.executeQuery(sql);
             while (rss.next()) {
                 counts = Integer.parseInt(rss.getString(1));
             }
 
-            String sqle = "select SSR_TASK_ID,TASK_CATEGORY,TASK_TITLE,TASK_DESCRIPTION,ASSIGNED_TO,to_char(START_TIME, 'dd-mm-yyyy HH12:mi:ss am' ),to_char(END_TIME, 'dd-mm-yyyy HH12:mi:ss am' ),ASSIGNED_BY,to_char(ASSIGNED_DATE, 'dd-mm-yyyy HH12:mi:ss am' ),TASK_STATUS,ST_FILE_ATTACHMENT,SERVICE_DESK_ID from SSR_SERVICE_TASK where request_id = " + reqID + " and SERVICE_DESK_ID = " + reqAssignId + " ORDER BY SSR_TASK_ID DESC ";
+            sqle = "select SSR_TASK_ID,TASK_CATEGORY,TASK_TITLE,TASK_DESCRIPTION,ASSIGNED_TO,to_char(START_TIME, 'dd-mm-yyyy HH12:mi:ss am' ),to_char(END_TIME, 'dd-mm-yyyy HH12:mi:ss am' ),ASSIGNED_BY,to_char(ASSIGNED_DATE, 'dd-mm-yyyy HH12:mi:ss am' ),TASK_STATUS,ST_FILE_ATTACHMENT,SERVICE_DESK_ID from SSR_SERVICE_TASK where request_id = " + reqID + " and SERVICE_DESK_ID = " + reqAssignId + " ORDER BY SSR_TASK_ID DESC ";
+            }else{
+            String sql = "select count(*) as count from SSR_SERVICE_TASK where REQUEST_ID = " + reqID + " and SERVICE_DESK_ID = " + reqAssignId + " ";
+            rss = st.executeQuery(sql);
+            while (rss.next()) {
+                counts = Integer.parseInt(rss.getString(1));
+            }
+
+            sqle = "select SSR_TASK_ID,TASK_CATEGORY,TASK_TITLE,TASK_DESCRIPTION,ASSIGNED_TO,to_char(START_TIME, 'dd-mm-yyyy HH12:mi:ss am' ),to_char(END_TIME, 'dd-mm-yyyy HH12:mi:ss am' ),ASSIGNED_BY,to_char(ASSIGNED_DATE, 'dd-mm-yyyy HH12:mi:ss am' ),TASK_STATUS,ST_FILE_ATTACHMENT,SERVICE_DESK_ID from SSR_SERVICE_TASK where request_id = " + reqID + " and SERVICE_DESK_ID = " + reqAssignId + " and ASSIGNED_TO like '%"+sessionUsername+"%' ORDER BY SSR_TASK_ID DESC ";
+            
+            }
             ResultSet rs = null;
             rs = stt.executeQuery(sqle);
             boolean check = true;
