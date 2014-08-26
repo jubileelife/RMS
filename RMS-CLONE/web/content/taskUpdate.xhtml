@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+
+            <ui:define name="left">
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <p:panel header="Task Update Screen">
+                        
+                        <p:confirmDialog styleClass="overlayDialog" message="Task Updated." widgetVar="myDialogReqDetAssignTask" header="Task Updated." severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="true" value="OK" oncomplete="myDialogReqDetAssignTask.hide()"  />
+                        </p:confirmDialog>
+                         
+                        <p:panelGrid columns="4" style="margin-top:20px">
+                            <f:facet name="header">  
+                                Update Assignment
+                            </f:facet>  
+                            <p:column>
+                                <br/>
+                            <p:outputLabel  value="Request ID"></p:outputLabel>
+                            <br/>
+                            <p:inputText  value="#{update_task.taskReqId}" readonly="true"/>
+                            <br/><br/>
+                            <p:outputLabel  value="Assignment"></p:outputLabel>
+                            <br/><br/>
+                            <p:inputText  value="#{req_Assignment.assignmentAssignName}" readonly="true"></p:inputText>
+                            <p:inputText type="hidden"  value="#{update_task.taskReqAsignId}" readonly="true"></p:inputText>
+                            <br/><br/>
+                            <p:outputLabel  value="Task ID"></p:outputLabel>
+                            <br/><br/>
+                            <p:inputText  value="#{update_task.taskReqTaskName}" readonly="true"></p:inputText>
+                            <p:inputText type="hidden"  value="#{update_task.taskReqTaskId}" readonly="true"></p:inputText>
+                            <br/>
+                            <p:outputLabel  value="Date"></p:outputLabel>
+                            <br/><br/>
+                            <p:inputText  value="#{currentDate}"  readonly="true">
+                                <f:convertDateTime pattern="dd-MMM-yyyy" type="date" />
+                            </p:inputText>
+                            <br/>   <br/>
+                             <p:outputLabel   value="Assignment Status"></p:outputLabel>
+                            <br/>
+                            
+                              <p:selectOneMenu style="margin-top:12px;" value="#{update_task.taskReqTaskStatus}" required="false" requiredMessage="Please Select Request Type" valueChangeListener="#{req_init.reqTypeChangeEvent}" >
+                                                <f:selectItems value="#{request_details.requestStatusDd}" var="reqType" itemLabel="#{reqType.ddString}"  itemValue="#{reqType.ddValues}"  />              
+                                            </p:selectOneMenu>
+                                            
+                            
+                            </p:column>
+                            
+                            <p:column>
+                           
+                                <p:inputTextarea  rows="15" cols="50" style="width: 600px;"  maxlength="60" value="#{update_task.taskReqTaskDesc}"/> 
+                            <br/><br/><br/>
+                             <p:outputLabel style="text-align: center;color: red;" value="#{update_task.errorMesg}" />
+
+                             <p:commandButton style="float: right;" id="insert" value="Update Task" action="#{update_task.updateAssignmentTask()}" update="@form"/>                 
+                            
+                            </p:column>
+                        </p:panelGrid>
+
+                        <br></br>
+                        
+
+                        <h:panelGrid style="width: 880px;">
+                        
+                            <p:dataTable  styleClass="textStyle" rows="10" paginator="false" id="reqAssignUpdateTableTaskUP" filteredValue="#{update_task.filtered}" value="#{update_task.tableData}"  var="eachItemrequpdatetask" emptyMessage="No Record Found.">
+                                <p:column sortBy="#{eachItemrequpdatetask.serial}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Serial No"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdatetask.serial}"/>
+                               </p:column>
+
+                                <p:column sortBy="#{eachItemrequpdatetask.taskupdateStatus}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Status"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdatetask.taskupdateStatus}"/>
+                               </p:column>
+                                
+                                <p:column sortBy="#{eachItemrequpdatetask.taskupdateDec}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Description"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdatetask.taskupdateDec}"/>
+                               </p:column>
+                                
+                                <p:column sortBy="#{eachItemrequpdatetask.taskUpdateBy}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Update By"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdatetask.taskUpdateBy}"/>
+                               </p:column>
+                                
+                                <p:column sortBy="#{eachItemrequpdatetask.taskupdatedate}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Update Date"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdatetask.taskupdatedate}"/>
+                               </p:column>
+                                
+                        </p:dataTable>
+                           
+                        </h:panelGrid>
+                            
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

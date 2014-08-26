@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body>
+
+        <ui:composition template="/WEB-INF/template/logintemplate.xhtml">
+
+            <div class="content-wrap clearfix">
+
+                <ui:define name="title">
+                    <h:outputText value="Login"></h:outputText>
+                </ui:define>
+                <ui:define name="left">
+
+                </ui:define>
+                <ui:define name="content">
+
+                    <script type="text/javascript">
+
+                        window.onload = function() {
+                            document.getElementById('logform:uname').focus();
+                        }
+
+                        function handleLoginRequest(xhr, status, args) {
+                            if (args.validationFailed || !args.loggedIn) {
+                                PF('dlg').jq.effect("shake", {times: 5}, 100);
+                            }
+                            else {
+                                PF('dlg').hide();
+                                $('#loginLink').fadeOut();
+                            }
+                        }
+
+                        function handleLoginRequest1(xhr, status, args) {
+                            if (args.validationFailed || !args.loggedIn) {
+                                PF('dlgforgot').jq.effect("shake", {times: 5}, 100);
+                            }
+                            else {
+                                PF('dlgforgot').hide();
+                                $('#loginLink').fadeOut();
+                            }
+                        }
+
+                        function start() {
+                            PF('statusDialog').show();
+                        }
+
+                        function stop() {
+                            PF('statusDialog').hide();
+                        }
+
+
+                    </script>
+
+                    <h:form id="logform">
+
+
+                        <p:dialog styleClass="overlayDialog" modal="true" widgetVar="statusDialog" draggable="false"  closable="false" resizable="false">
+                            <p:graphicImage url="/resources/asset/loading.gif" />
+                        </p:dialog>
+
+
+
+                        <p:outputPanel id="panel" style="margin-left:auto!important;margin-right:auto!important;width:960px!important;background-color:white;">
+
+                            <table  align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="vertical-align: middle;overflow: hidden;text-align: left;">
+                                <tr>
+
+                                    <td width="70%"  style="font-size: 14px;font-weight: bold;font-family: Arial;text-align: center;vertical-align: middle;"  >
+
+                                        Requirements management System is the process of documenting, analyzing, tracing, prioritizing and agreeing on requirements and then controlling change and communication.<br/><br/><br/><br/>
+
+                                        &nbsp;&nbsp;&nbsp;&nbsp;The purpose of requirements management System is to ensure that an organization documents, verifies, and meets the needs and expectations of its users.
+
+
+                                    </td>
+
+
+                                    <td width="30%" align="right">
+                                        <table>
+
+                                            <tr><td colspan="3" style="line-height: 80px;height:70px;text-align: center;color: red;font-weight: bold;" ><p:outputLabel value="#{user.errorMesg}" /></td></tr>
+                                            <tr><td style="width: 50px;line-height: 25px;"></td><td style="padding-bottom: 2px;width: 90px;line-height: 25px;">
+                                                    <p:outputLabel id="username" value="Employee ID" />
+                                                </td>
+                                                <td style="padding-bottom: 2px;width: 200px;line-height: 25px;">     
+                                                    <p:inputText id="uname" value="#{user.username}"  ></p:inputText>
+                                                </td>
+                                            </tr>
+                                            <tr><td style="width: 50px;line-height: 25px;"></td><td style="padding-bottom: 2px;width: 90px;line-height: 25px;">
+                                                    <p:outputLabel id="password" value="Password"/>
+                                                </td>
+                                                <td style="padding-bottom: 2px;width: 200px;line-height: 25px;">
+                                                    <p:password id="pass" value="#{user.password}" feedback="ture" />
+                                                </td></tr>
+                                            <tr><td style="width: 50px;line-height: 25px;"></td><td style="padding-bottom: 2px;width: 90px;line-height: 25px;">
+                                                    <p:outputLabel value=""/>
+                                                </td>
+                                                <td style="padding-bottom: 2px;width: 200px;line-height: 25px;">
+                                                    <p:commandButton id="login" value="Login" update="@form" action="#{user.login()}" onclick="PrimeFaces.monitorDownload(start, stop);"  style="color: maroon"></p:commandButton>
+
+
+                                                    <p:commandButton id="clr" value="Clear" type="reset" style="color: maroon"></p:commandButton>
+                                                </td>
+                                            </tr>
+                                            <tr><td style="width: 50px;line-height: 25px;"></td><td style="padding-bottom: 2px;width: 90px;line-height: 25px;">
+                                                    <p:outputLabel value=""/>
+                                                </td>
+                                                <td style="padding-bottom: 2px;width: 200px;line-height: 25px;">
+                                                    <p:commandLink id="forg" ajax="true" style="text-decoration: none;color: maroon" onclick="PF('dlgforgot').show()" value="I can't access my account."></p:commandLink>
+
+
+                                                    <br/><br/>
+
+                                                    <h:outputText value="--------------OR---------------" style="color: black;alignment-baseline: middle"  />
+                                                    <br/>
+                                                    <p:commandButton id="signup" value="Create New Account" type="reset" onclick="dlg.show()" style="color: maroon"></p:commandButton>
+
+
+                                                    <p:confirmDialog styleClass="overlayDialogConfrm" message="" widgetVar="myDialogVarLogin" header="User Created Successfully, Please Login." severity="alert" >
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton  value="OK" oncomplete="myDialogVarLogin.hide()"  />
+                                                    </p:confirmDialog>
+                                                    
+                                                    <p:confirmDialog styleClass="overlayDialogConfrm" message="" widgetVar="myDialogVarPassword" header="Password change request submitted, Please check your email." severity="alert" >
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton  value="OK" oncomplete="myDialogVarPassword.hide()"  />
+                                                    </p:confirmDialog>
+
+                                                </td>
+                                            </tr>
+                                            <tr><td colspan="3" style="line-height: 60px;" >&nbsp;</td></tr>
+                                        </table>   
+                                    </td>
+
+
+
+                                </tr>  
+                            </table>
+
+                            <p:growl id="growlforgot" showDetail="true" life="3000" />
+
+                            <p:confirmDialog styleClass="overlayDialogConfrm" id="dialogforgot" header="Forgot Password" widgetVar="dlgforgot" >
+
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputLabel  value="Employee ID:" />
+                                    <p:inputText size="40" value="#{user.forgotEmpId}"   />
+
+                                    <h:outputLabel  value="Email Address:" />
+                                    <p:inputText size="40" value="#{user.forgotEmpEmail}"   />
+
+                                    <h:outputLabel  value="New Password:" />
+                                    <p:password value="#{user.forgotEmpPass}" size="40"  />
+
+                                    <f:facet name="footer">
+                                        <p:commandButton id="forgtopass" value="Forgot Password" action="#{user.userForgot()}" update="growlforgot"  />
+                                        <p:commandButton  value="Close" oncomplete="dlgforgot.hide()"  />
+                                    </f:facet>
+                                </h:panelGrid>
+
+                            </p:confirmDialog>
+
+                            <p:growl id="growlsignup" showDetail="true" life="3000" />
+
+
+                            <p:confirmDialog styleClass="overlayDialogConfrm" id="dialog" header="Sign Up" widgetVar="dlg" >
+
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputLabel for="EmployeeCode" value="Employee ID:" />
+                                    <p:inputText size="40" value="#{user.empCode}" id="EmployeeCode" label="Employee Code" />
+
+
+                                    <h:outputLabel  value="Email Address:" />
+                                    <p:inputText size="40" value="#{user.empEmail}"   />
+
+                                    <h:outputLabel for="passwrd" value="Password" />
+                                    <p:password size="40" id="passwrd" value="#{user.empPassword}" feedback="ture" />
+
+                                    <f:facet name="footer">
+                                        <p:commandButton id="signupButton" value="Sign Up" update="growlsignup" action="#{user.userRegister()}" />
+                                        <p:commandButton  value="Close" oncomplete="dlg.hide()"  />
+                                    </f:facet>
+                                </h:panelGrid>
+
+                            </p:confirmDialog>
+
+
+                        </p:outputPanel>
+
+                        <p:remoteCommand name="AutoRunMethodLog" actionListener="#{user.checkAlreadyLogin()}"  autoRun="true" />
+
+
+                    </h:form>
+
+                </ui:define>
+
+            </div>  
+
+        </ui:composition>
+    </h:body>
+</html>
+

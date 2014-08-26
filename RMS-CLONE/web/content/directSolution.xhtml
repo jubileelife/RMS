@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+ 
+            <ui:define name="left">
+ 
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="reqDetailsSolution">
+
+                    <p:panel header="Solution Screen"> 
+
+                        <p:panelGrid columns="6" style="margin-top:5px;width: 855px;">
+
+
+                            <f:facet name="header">  
+                                Request Details 
+                            </f:facet>  
+
+
+                            <p:outputLabel id="no8" value="Request No"></p:outputLabel>
+                            <p:inputText id="requestno" value="#{req_Assignment.assignmentScreenReqId}" readonly="true"/>
+
+                            <p:outputLabel id="rqdate8" value="Request Date"></p:outputLabel>
+                            <p:inputText id="reqdate8" value="#{req_Assignment.assignmentScreenReqDate}" readonly="true"></p:inputText>
+
+                            <p:outputLabel id="Requeststatus8" value="Status"></p:outputLabel>
+                            <p:inputText id="reqstatus8" value="New" readonly="true"/>
+
+
+                            <p:outputLabel id="rtype8" value="Type"></p:outputLabel>
+                            <p:inputText id="reqttype8" value="#{req_Assignment.assignmentScreenReqType}" readonly="true"/>
+                            <p:outputLabel id="sys8" value="System"></p:outputLabel>
+
+                            <p:inputText id="systemmodule8" value="#{req_Assignment.assignmentScreenReqSystem}" readonly="true"/>
+
+                            <p:outputLabel id="sysmod8" value="System Module"></p:outputLabel>
+
+                            <p:inputText id="systemcomp8" size="50" value="#{req_Assignment.assignmentScreenReqSystemMod}" readonly="true"/>
+
+                            <p:outputLabel id="App_date8" value="Requester"></p:outputLabel>
+
+                            <p:inputText id="txt_app_date8" value="#{req_Assignment.assignmentScreenRequester}" readonly="true"/>
+
+                            <p:outputLabel id="exp_date8" value="Request Completion Date"></p:outputLabel>
+
+                            <p:inputText id="txt_EXP_date8" value="#{req_Assignment.assignmentreqtargetdate}" readonly="true"/>
+
+                            <p:outputLabel id="req_pryarty8" value="Request Priority"></p:outputLabel>
+
+                            <p:inputText id="txt_exp_del_date28" value="#{req_Assignment.assignmentScreenReqPriority}" readonly="true"/>
+
+                            <p:outputLabel id="req_pryarty348" value="Approved Date"></p:outputLabel>
+
+                            <p:inputText id="txt_exp_del_date4428" value="#{req_Assignment.assignmentScreenReqApproveDate}" readonly="true"/>
+
+                            <p:outputLabel id="req_pryarty48" value="Approved By"></p:outputLabel>
+
+                            <p:inputText id="txt_exp_del_date428" value="#{req_Assignment.assignmentScreenApproveBy}" readonly="true"/>
+
+
+                        </p:panelGrid>
+
+                        <br></br>
+                        <p:panelGrid columns="1" >
+                            <f:facet name="header">  
+                                Request Title
+                            </f:facet>  
+                            <p:inputText id="reqtit8" value="#{req_Assignment.assignmentScreenReqTitle}" style="width: 830px" readonly="true"/>
+                        </p:panelGrid> 
+                        <br></br>
+
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">  
+                                Requester Description  
+                            </f:facet>    
+                            <p:inputTextarea id="reqdesc8" rows="10" cols="50" style="width: 400px;" readonly="true" maxlength="60" value="#{req_Assignment.assignmentScreenReqDesc}"/> 
+
+                            <f:facet name="header">  
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                Approval Comments  
+                            </f:facet>    
+
+                            <p:inputTextarea id="appcomm8" rows="10" cols="50" required="false" maxlength="60" style="width:400px" readonly="true" requiredMessage="Approval/Decline Comments Require." value="#{req_Assignment.assignmentScreenReqApprovDesc}"/>
+
+
+                        </p:panelGrid> 
+
+                        <br/>
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">  
+                                Solution  
+                            </f:facet>    
+
+
+                            <p:inputTextarea  rows="10" cols="50"  maxlength="60" style="width:830px"  value="#{req_Assignment.solutionTxt}" onblur="javascript: if (this.value == '') {
+                                        this.value = 'Please enter the Solution.';
+                                    }" onclick="javascript: if (this.value == 'Please enter the Solution.') {
+                                                this.value = '';
+                                            }" onkeyup="javascript: if (this.value == 'Please enter the Solution.') {
+                                                        this.value = '';
+                                                    }" />
+
+                        </p:panelGrid>
+                        <br/>
+                        
+                          <p:confirmDialog styleClass="overlayDialog" message="Solution Submitted." widgetVar="myDialogSolution" header="Solution Submitted." severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="false" value="OK" action="#{req_Assignment.redirectUrlAssigned('')}"  />
+                        </p:confirmDialog>
+
+                            <p:outputLabel style="text-align: center;color: red;" value="#{req_Assignment.errorMesg}" />
+
+                        
+                        <h:panelGrid columns="1">
+
+                            <p:commandButton id="insert" ajax="true" value="Add     Solution" action="#{req_Assignment.addSolution()}"  update="@form" />                 
+                        </h:panelGrid>
+                       
+                            <br/>
+                            
+                            <p:dataTable style="width:860px;"  styleClass="textStyle" rows="10" paginator="false" id="reqDetailSolTable" filteredValue="#{req_Assignment.solutionFilter}" value="#{req_Assignment.solutionDataTable}"  var="eachItemreqSol" emptyMessage="No Record Found.">
+                                <p:column sortBy="#{eachItemreqSol.serialNo}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Serial No"/>
+                                            </f:facet>
+                                            <h:outputText  value="#{eachItemreqSol.serialNo}"/>
+                                        </p:column>
+                                
+                                <p:column sortBy="#{eachItemreqSol.solutionUpdateDate}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Date"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemreqSol.solutionUpdateDate}"/>
+                                        </p:column>
+                                
+                                <p:column sortBy="#{eachItemreqSol.solutionUpdateBy}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Post By"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemreqSol.solutionUpdateBy}"/>
+                                        </p:column>
+                                
+                                <p:column sortBy="#{eachItemreqSol.solution}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Solution"/>
+                                            </f:facet>
+                                    <h:outputText  value="#{eachItemreqSol.solution}"/>
+                                        </p:column>
+                                
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Action"/>
+                                            </f:facet>
+
+                                            <p:commandButton update=":reqDetailsSolution" value="Detail" icon="ui-icon-extlink" actionListener="#{request_details.onClickReqSolDetail(req_Assignment.assignmentScreenReqId,eachItemreqSol.solutionUpdateDate,eachItemreqSol.solutionUpdateBy,eachItemreqSol.solution)}">
+                                            </p:commandButton>
+
+                                        </p:column>
+                                
+                                
+                            </p:dataTable>
+                       
+                            <p:confirmDialog styleClass="overlayDialogConfrm" id="reqsoldetdailog" widgetVar="mySolDataDialog" header="Solution Deatail.">
+                                     
+                                    <p:panelGrid columns="2" style="margin-top:10px;width: 850px;">
+                                    <p:outputLabel style=" margin-top:6px;" value="Request No"></p:outputLabel>
+                                    <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqID}" readonly="true" />
+                                      
+                                    <p:outputLabel style=" margin-top:6px;" value="Date"></p:outputLabel>
+                                    <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqDate}" readonly="true" />
+                                    
+                                    <p:outputLabel style=" margin-top:6px;" value="Update By"></p:outputLabel>
+                                    <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqUpdateBy}" readonly="true" />
+                                    
+                                    <p:outputLabel style=" margin-top:6px;" value="Remarks"></p:outputLabel>
+                                    <p:inputTextarea  rows="10" cols="50"  maxlength="60" style="width:400px" readonly="true"  value="#{request_details.ddReqRemarks}"/>
+                                    </p:panelGrid>
+                                   
+                                    
+                                    </p:confirmDialog>  
+                    
+                    </p:panel>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

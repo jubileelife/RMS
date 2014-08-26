@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body> 
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+
+            <ui:define name="left">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <p:panel header="Assignment Update Screen">
+
+                        <p:confirmDialog styleClass="overlayDialog" message="Assignment Updated." widgetVar="myDialogReqDetAssign" header="Assignment Updated." severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="false" value="OK" action="requestList.xhtml"  />
+                        </p:confirmDialog>
+
+                        <p:panelGrid columns="4" style="margin-top:20px">
+                            <f:facet name="header">  
+                                Update Assignment
+                            </f:facet>  
+                            <p:column>
+                                <br/>
+                                <p:outputLabel id="tid" value="Request ID"></p:outputLabel>
+                                <br/>
+                                <p:inputText id="taskid" value="#{assignment_update.assignUpdatereqId}" readonly="true"/>
+                                <br/><br/>
+                                <p:outputLabel id="modtype" value="Assignment"></p:outputLabel>
+                                <br/>
+                                <p:inputText id="moduletypee" value="#{assignment_update.assignUpdateAssignCatergory}" readonly="true"></p:inputText>
+                                <p:inputText type="hidden" id="moduletype" value="#{assignment_update.assignUpdateAssignId}" readonly="true"></p:inputText>
+                                <br/><br/>
+                                <p:outputLabel id="mod" value="Date"></p:outputLabel>
+                                <br/>
+                                <p:inputText id="reqasignupdatedate" value="#{currentDate}"  readonly="true">
+                                    <f:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a" type="date" />
+                                </p:inputText>
+                                <br/><br/>
+                                <p:outputLabel   value="Assignment Status"></p:outputLabel>
+                                <br/>
+                                <p:selectOneMenu style="margin-top:12px;" value="#{assignment_update.assignUpdateStatus}"  requiredMessage="Please Select Request Type"  >
+                                    <f:selectItems value="#{request_details.requestStatusDd}" var="reqType" itemLabel="#{reqType.ddString}"  itemValue="#{reqType.ddValues}"  />              
+                                </p:selectOneMenu>
+
+                               
+                            </p:column>
+
+                            <p:column>
+
+                                <p:inputTextarea  rows="10" cols="50" style="width: 600px;"  maxlength="60" value="#{assignment_update.assignUpdateDesc}"/> 
+                                <br/><br/><br/>
+                                <p:outputLabel style="text-align: center;color: red;" value="#{assignment_update.errorMesg}" />
+
+                                <p:commandButton style="float: right;" id="insert" value="Update Assignment" action="#{assignment_update.updateAssignment()}" update="@form"/>                 
+
+                            </p:column>
+                        </p:panelGrid>
+
+                        <br></br>
+
+
+                        <h:panelGrid style="width: 880px;">
+                            
+                            <p:dataTable  styleClass="textStyle" rows="10" paginator="false" id="reqAssignUpdateTable" filteredValue="#{assignment_update.filtered}" value="#{assignment_update.tableData}"  var="eachItemrequpdate" emptyMessage="No Record Found.">
+                                <p:column sortBy="#{eachItemrequpdate.serial}" 
+                                          filterMatchMode="startsWith">
+                                    <f:facet name="header">
+                                        <h:outputText value="Serial No"/>
+                                    </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdate.serial}"/>
+                                </p:column>
+
+                                <p:column sortBy="#{eachItemrequpdate.assignStatus}" 
+                                          filterMatchMode="startsWith">
+                                    <f:facet name="header">
+                                        <h:outputText value="Status"/>
+                                    </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdate.assignStatus}"/>
+                                </p:column>
+
+                                <p:column sortBy="#{eachItemrequpdate.assignDesc}" 
+                                          filterMatchMode="startsWith">
+                                    <f:facet name="header">
+                                        <h:outputText value="Description"/>
+                                    </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdate.assignDesc}"/>
+                                </p:column>
+
+                                <p:column sortBy="#{eachItemrequpdate.assingUpdateBy}" 
+                                          filterMatchMode="startsWith">
+                                    <f:facet name="header">
+                                        <h:outputText value="Update By"/>
+                                    </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdate.assingUpdateBy}"/>
+                                </p:column>
+
+                                <p:column sortBy="#{eachItemrequpdate.assignreqAssignUpdateDate}" 
+                                          filterMatchMode="startsWith">
+                                    <f:facet name="header">
+                                        <h:outputText value="Update Date"/>
+                                    </f:facet>
+                                    <h:outputText  value="#{eachItemrequpdate.assignreqAssignUpdateDate}"/>
+                                </p:column>
+
+                            </p:dataTable>
+
+                            <p:remoteCommand name="AutoRunMethod" action="#{assignment_update.updateAssignUpdateDataTable()}" update="reqAssignUpdateTable" autoRun="true" />
+
+                        </h:panelGrid>
+
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

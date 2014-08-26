@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="left">
+                <ui:include src="menu.xhtml"/>
+            </ui:define>
+       
+        <ui:define name="content">           
+            <div style="padding-top: 15px">
+                <ul>
+                    <li style="float: left;overflow: hidden"><a href="http://dost:7001/RMS/faces/search_request.xhtml">Home</a></li>
+                    <li style="float: right;overflow: hidden"><a href="UAT_Results.xhtml">Go to Previous Page</a></li>
+                </ul>
+            </div>
+            <p:separator style="padding-top: 0.5px"/>
+            <div id="uat_master" style="display: table">
+                <div id="uat_row" style="display: table-row">
+                    <div id="uat_left"  style="width: 20%;float: left; padding-top: 0.05px">
+                        <p:panel header="Messages" style="padding-top: 5px" toggleOrientation="horizontal" toggleable="true">
+                            
+                        </p:panel>
+                        <p:panel header="News"  style="padding-top: 5px" toggleOrientation="horizontal" toggleable="true">
+                            
+                        </p:panel>
+                    </div>
+                    <div style="width: 79%; float: right;padding-top: 5px" align='center'>
+                        <h:form>
+                                    <p:panel>
+                                        <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                                     emptyMessage="No Record found with given criteria">
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Request Id"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Type"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Approve By"/>
+                                                </f:facet>
+                                                <h:outputText value="Dr.Adnan"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Date"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Title"/>
+                                                </f:facet>
+                                                <h:outputText value="Cf:formula error"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Detail"/>
+                                                </f:facet>
+                                                <p:commandButton id="asg" value="Detail" update="@form"/>
+                                            </p:column>
+
+
+                                        </p:dataTable>
+
+                                    </p:panel>
+                                </h:form>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

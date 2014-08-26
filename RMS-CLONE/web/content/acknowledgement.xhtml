@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="left">
+                <ui:include src="menu.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                <h:form>
+                   <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+                             
+                             emptyMessage="No Record found with given criteria">
+                         
+                          <p:column>  
+                            <f:facet name="header">
+                                <h:outputText value="Request Id"/>
+                            </f:facet>
+                        <h:outputText value="1111"/>
+                        </p:column>
+                         
+                          <p:column>  
+                            <f:facet name="header">
+                                <h:outputText value="Type"/>
+                            </f:facet>
+                        <h:outputText value="1111"/>
+                        </p:column>
+                         
+                           <p:column>  
+                            <f:facet name="header">
+                                <h:outputText value="Approve By"/>
+                            </f:facet>
+                        <h:outputText value="Dr.Adnan"/>
+                        </p:column>
+                         
+                         <p:column>  
+                            <f:facet name="header">
+                                <h:outputText value="Date"/>
+                            </f:facet>
+                        <h:outputText value="01-04-2014"/>
+                        </p:column>
+                      
+                         <p:column>  
+                            <f:facet name="header">
+                                <h:outputText value="Title"/>
+                            </f:facet>
+                        <h:outputText value="Cf:formula error"/>
+                        </p:column>
+                         
+                         <p:column>  
+                            <f:facet name="header">
+                                <h:outputText value="Detail"/>
+                            </f:facet>
+                         <p:commandButton id="asg" value="Detail" update="@form"/>
+                          </p:column>
+                         
+                         
+                     </p:dataTable>
+                   
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

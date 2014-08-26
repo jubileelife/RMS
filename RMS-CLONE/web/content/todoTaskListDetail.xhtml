@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="left">
+                    <ui:include src="menu.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                <h:form>
+                    
+                      <p:tabView>
+                          
+                         <p:tab id="req" title="Detail">
+                    <p:panel header="Request Detail Screen Request#: 100  To Do: Analysis">
+                    
+                     <p:panelGrid columns="6" style="margin-top:10px">
+                         <f:facet name="header">  
+                             System Component  
+                         </f:facet>  
+                         <p:outputLabel id="rtype1" value="Type"></p:outputLabel>
+                         <p:inputText id="reqttype1" value="Modification" readonly="true"/>
+                         <p:outputLabel id="syst" value="System"></p:outputLabel>
+
+                         <p:inputText id="systemmodule1" value="CLAS" readonly="true"/>
+
+                         <p:outputLabel id="sysmod1" value="System Module"></p:outputLabel>
+
+                         <p:inputText id="systemcomp1" value="Auto Underwriting" readonly="true"/>
+                     </p:panelGrid>
+                      <br></br>
+                       <p:panelGrid columns="1">
+                           <f:facet name="header">  
+                             Title and Description  
+                         </f:facet>  
+                           <p:inputText id="reqtit1" value="Changing in TSAR" style="width: 1000px" readonly="true"/>
+                            </p:panelGrid> 
+                      <br></br>
+                          <p:tabView id="tabView" dynamic="true" cache="true" style="width: 1025px">
+                            <p:tab id="tba1" title="Request">
+                     <p:panelGrid columns="1">
+                           <f:facet name="header">  
+                             Description  
+                         </f:facet>    
+                         <p:inputTextarea id="reqdesc" rows="10" cols="50" style="width: 960px" readonly="true" maxlength="60" value="Changes in TSAR formula."/> 
+                     </p:panelGrid> 
+                            </p:tab>
+                           
+                           <p:tab id="tab2" title="Approval Remarks">
+                               <p:panelGrid columns="1">
+                                   <f:facet name="header">  
+                                       Comments  
+                                   </f:facet>    
+                                  
+                                   <p:inputTextarea id="appcomm" rows="10" cols="50" required="true" maxlength="60" style="width: 960px" value="Approved, IT please Go Ahead. File also attaching"/>
+                               </p:panelGrid>
+                           </p:tab>
+                       </p:tabView>
+                        
+                        <p:panelGrid columns="2" style="margin-top:20px">
+                        <f:facet name="header">  
+                             File Source  
+                         </f:facet>  
+                         <p:commandLink id="filepath" style="margin-right:20px;" ajax="false">
+                             <h:outputText value="autounderwriting.txt" />
+                         </p:commandLink>
+                     </p:panelGrid>
+                       <p:growl id="messages" showDetail="true"/>
+                          </p:panel>
+                         </p:tab>
+                     
+                          <p:tab id="act" title="Task">
+                              
+                                
+                             <p:panelGrid columns="8" style="margin-top:20px">
+                         <f:facet name="header">  
+                             Category
+                         </f:facet>  
+                                
+                                 <p:selectManyCheckbox id="pageDirection"
+                                                       layout="pageDirection">
+                                     <f:selectItem itemLabel="To Do 1" itemValue="ToDo1" />
+                                     <f:selectItem itemLabel="To Do 2" itemValue="ToDo2" />
+                                     <f:selectItem itemLabel="To Do 3" itemValue="ToDo3" />
+                                 </p:selectManyCheckbox>
+                                
+                                 <p:selectOneMenu value="assign to" required="true">
+                                     <f:selectItem itemLabel="Select IT Person" itemValue="" />
+                                     <f:selectItem itemLabel="Nadeem" itemValue="N" />
+                                     <f:selectItem itemLabel="Javvad" itemValue="J" />
+                                     <f:selectItem itemLabel="Mazhar" itemValue="M" />              
+                                     <f:selectItem itemLabel="Burhan" itemValue="B" />              
+                                 </p:selectOneMenu>
+
+
+                                 <p:outputLabel id="endate" value="Target Date"></p:outputLabel>
+                                 <p:calendar  pattern="dd-MM-yyyy" id="enddates"> 
+                                 </p:calendar>
+                                
+                                 
+                                  <p:commandButton id="comm" value="Comments Popup Button" update="@form"/>  
+                                   <p:commandButton id="insert" value="Add" update="@form"/>  
+                             </p:panelGrid>
+                             
+                               <p:panelGrid columns="1" style="margin-top:20px">
+                        <f:facet name="header">  
+                             File Uploading  
+                         </f:facet>  
+                         
+                        
+                         
+                         <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                                       update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png|txt)$/" />
+
+                         
+                     </p:panelGrid>
+                               
+                               <br></br>
+                          
+                           <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                     emptyMessage="No Record found with given criteria">
+
+                            <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Task Category"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                               
+                               <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Assigned To"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                              
+                               <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Assignment Date"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                               
+                                <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Target Date"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                               
+                               <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Comments"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                               
+                               <p:column>  
+                                <f:facet name="header">
+                                     <h:outputText value="Delete"/>
+                                </f:facet>
+                                <p:commandButton id="insert" value="Assign Request" update="@form"/> 
+                            </p:column>
+                               
+                           </p:dataTable>
+                                                  
+                          </p:tab>
+                      
+                      
+                      </p:tabView>
+                    
+                    
+                    
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

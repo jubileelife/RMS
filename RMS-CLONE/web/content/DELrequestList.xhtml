@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Request Listing</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="title">
+                <h:outputText value="Request Listing"></h:outputText>
+            </ui:define>
+            <ui:define name="left">
+                   <ui:include src="menu.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="reqdet">
+                    <p:panel header="Request Listing Screen">
+
+                        <p:panelGrid columns="9" style="margin-top:20px">
+                            <p:commandLink id="addreq" action="requestInitiation.xhtml?faces-redirect=true" style="margin-right:20px;" ajax="false">
+                                <h:outputText value="Add New Request" />
+                            </p:commandLink>  
+                             <p:commandLink id="det" action="requestListDetail.xhtml?faces-redirect=true" style="margin-right:20px;" ajax="false">
+                                <h:outputText value="Table Detail" />
+                            </p:commandLink>  
+                        </p:panelGrid>
+                        <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                     emptyMessage="No Record found with given criteria">
+
+                            <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Request Id"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+
+                            <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Request Date"/>
+                                </f:facet>
+                                <h:outputText value="01-04-2014"/>
+                            </p:column>
+
+                            <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Request Status"/>
+                                </f:facet>
+                                <h:outputText value="New"/>
+                            </p:column>
+
+                            <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="System"/>
+                                </f:facet>
+                                <h:outputText value="Clas"/>
+                            </p:column>
+
+                            <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Request title"/>
+                                </f:facet>
+                                <h:outputText value="Cf:formula error"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Detail"/>
+                                </f:facet>
+                                <p:commandButton value="detail" id="det"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

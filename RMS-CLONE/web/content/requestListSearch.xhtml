@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Request Listing</title>
+    </h:head>
+    <h:body> 
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+              <ui:define name="title">
+            <h:outputText value="Request Assignment Listing"></h:outputText>
+        </ui:define>
+            <ui:define name="left">
+               
+            </ui:define>
+            <ui:define name="content">
+                <div>
+                <h:form id="reqassigndet">
+                     
+                     <p:panel header="Request Assignment Listing" style="height: 500px;">
+                         <p:dataTable  styleClass="textStyle" rows="4" paginator="true" id="assignmentTableSearch" filteredValue="#{req_Assignment.filtered}" value="#{req_Assignment.tableData}" var="eachItemassign" emptyMessage="No Record Found.">
+
+                              
+                            <p:column sortBy="#{eachItemassign.reqId}" filterBy="#{eachItemassign.reqId}"
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Request ID"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemassign.reqId}"/>
+                            </p:column>
+
+                                <p:column sortBy="#{eachItemassign.reqAssignmentId}" filterBy="#{eachItemassign.reqAssignmentId}"
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Assignment ID"/>
+                                </f:facet>
+                                 <h:outputText  value="#{eachItemassign.reqAssignmentId}"/>
+                            </p:column>
+                             
+                            <p:column  sortBy="#{eachItemassign.reqDate}">
+                                <f:facet name="header">
+                                    <h:outputText value="Request Date"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItemassign.reqDate}"/>
+                            </p:column>
+
+                            <p:column  sortBy="#{eachItemassign.reqTitle}">
+                                <f:facet name="header">
+                                    <h:outputText value="Request Title"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItemassign.reqTitle}"/>
+                            </p:column>
+
+                            <p:column  sortBy="#{eachItemassign.reqType}">
+                                <f:facet name="header">
+                                    <h:outputText value="Request Type"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItemassign.reqType}"/>
+                            </p:column>
+
+                            <p:column  sortBy="#{eachItemassign.requesterName}">
+                                <f:facet name="header">
+                                    <h:outputText value="Requester By"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItemassign.requesterName}"/>
+                            </p:column>
+
+                             <p:column  sortBy="#{eachItemassign.reqApproveBy}">
+                                <f:facet name="header">
+                                    <h:outputText value="Approved By"/>
+                                </f:facet>
+                                 <h:outputText value="#{eachItemassign.reqApproveBy}"/>
+                            </p:column>
+                             
+                             <p:column sortBy="#{eachItemassign.reqMaxAssign}">
+                                <f:facet name="header">
+                                    <h:outputText value="Assigned To"/>
+                                </f:facet>
+                                 <h:outputText value="#{eachItemassign.reqMaxAssign}"/>
+                            </p:column>
+                             
+                             <p:column  sortBy="#{eachItemassign.reqMaxCategory}">
+                                <f:facet name="header">
+                                    <h:outputText value="Assigned Category"/>
+                                </f:facet>
+                                 <h:outputText value="#{eachItemassign.reqMaxCategory}"/>
+                            </p:column>
+                             
+                             <p:column >
+                                 
+                                <f:facet name="header">
+                                    <h:outputText value="Action"/>
+                                </f:facet>
+                                 
+                                <p:commandButton style="width: 94px;margin-top: 5px;" value="View Details" update="@form" action="#{req_Assignment.onClickDetail()}" >
+                                    <f:setPropertyActionListener target="#{req_Assignment.clickedItem}" value="#{eachItemassign}"/>
+                                </p:commandButton>                                                                                                                                                                                                        
+                                 
+                                <p:commandButton style="width: 94px;margin-top: 5px;" value="Update Assignment" update="@form" action="#{assignment_update.onUpdateAssignment(eachItemassign.reqId,eachItemassign.reqAssignmentId)}" >
+                                    <f:setPropertyActionListener target="#{req_Assignment.clickedItem}" value="#{eachItemassign}"/>
+                                </p:commandButton> 
+                                 
+                             </p:column>
+                             
+                        </p:dataTable>
+                     </p:panel>
+                    
+                    <p:remoteCommand name="AutoRunMethod"  update="assignmentTableSearch" autoRun="true" />
+                    
+                   </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

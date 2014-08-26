@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Menu</title>
+    </h:head>
+    <h:body>
+       <h:form rendered="true">
+           <p:commandLink action="requestInitiation.xhtml?faces-redirect=true" id="changepass" style="color: maroon" >
+             <h:outputText value="Create Request" style="color: maroon" />  
+           </p:commandLink>
+        </h:form>
+        <br></br>
+        <h:form rendered="true">
+           <p:commandLink action="requestApproveList.xhtml?faces-redirect=true" id="changepass" style="color: maroon" >
+             <h:outputText value="Request Approval" style="color: maroon" />  
+           </p:commandLink>
+        </h:form>
+        
+        <br></br> <br></br>
+        <h:form rendered="true">
+           <p:commandLink action="assignmentList.xhtml?faces-redirect=true" id="changepass" style="color: maroon" >
+             <h:outputText value="Request Assignment" style="color: maroon" />  
+           </p:commandLink>
+        </h:form>
+        
+        <br></br> <br></br>
+        <h:form rendered="true">
+           <p:commandLink action="taskList.xhtml?faces-redirect=true" id="changepass" style="color: maroon" >
+             <h:outputText value="Task Listing" style="color: maroon" />  
+           </p:commandLink>
+        </h:form>
+        
+         <br></br> <br></br>
+        <h:form rendered="true">
+           <p:commandLink action="taskActivity.xhtml?faces-redirect=true" id="changepass" style="color: maroon" >
+             <h:outputText value="   Task Activity Listing" style="color: maroon" />  
+           </p:commandLink>
+        </h:form>
+         <h:form rendered="true">
+           <p:commandLink action="acknowledgement.xhtml?faces-redirect=true" id="changepass" style="color: maroon" >
+             <h:outputText value="  Acknowledge" style="color: maroon" />  
+           </p:commandLink>
+        </h:form>
+        
+    </h:body>
+</html>
+

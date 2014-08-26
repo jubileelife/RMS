@@ -1,0 +1,15 @@
+.overlayDialog div.ui-dialog-titlebar{
+display: none;
+}
+.overlayDialogConfrm div.ui-dialog-content{
+display: none!important;
+}
+.textStyle{
+text-align: center;
+}
+/*.ui-selectonemenu{
+     width: 100% !important;
+}
+.ui-selectonemenu-label{
+     width: 100% !important;
+}*/

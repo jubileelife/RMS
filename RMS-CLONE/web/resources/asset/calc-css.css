@@ -1,0 +1,92 @@
+.cal-info { margin: 30px 0px 20px 0px; }
+.cal-info p {margin-bottom: 5px;}
+.cal-info h2 { font-size: 16px; font-weight: normal; color: #002E5A; margin-bottom: 15px;}
+.cal-info-content { padding: 20px; background:  #ddd; border: 1px solid #ccc; margin: 10px 0px 30px 0px;}
+.cal-info-content p {color: #666666; font-size: 13px; line-height: 20px; margin-bottom: 10px;}
+.cal-info-content p span {color: #003366; font-weight: bold;}
+.error { }
+
+
+/* Table style calc */
+.border { border-bottom: 0px solid #ddd; margin: 0px 0 20px 0; padding: 0px 0px 00px 0px}
+table.calc { width: 100%; margin: 0px 0 0px 0;}
+table.calc th { background-color: #99CC99; text-align: center; font-weight: bold; font-size: 12px; padding: 7px; color: #fff; text-shadow: 1px 1px 1px #000; border: 1px solid #fff; }
+table.calc td { font-size: 13px; color: #666666; padding: 5px; border: 0px solid #eaeaea; }
+table.calc td .eg { font-size: 11px; color: #666; padding: 2px 1px 1px 1px; display:block;}
+table.calc td #err1 { color: #C00; padding: 1px;}
+table.calc td #err2 { color: #C00; padding: 1px;}
+table.calc td #err3 { color: #C00; padding: 1px;}
+table.calc td input[type=radio], input.radio { border: none; }  
+table.calc td input {background-color: #F1F1F1;
+    border: 1px solid #CCCCCC;
+    color: #999999;
+    font-size: 12px;
+    line-height: normal;
+    padding: 6px;}
+
+
+.fundscheme { padding: 5px 5px 5px 0px;}
+.inception { 
+		color: #666666;
+		font-size: 11px;
+		padding: 4px 0px 0px 0px; display: block; 
+		}
+.eg {
+	color: #666666;
+    font-size: 11px;
+    padding: 2px 4px 1px;
+	}		
+.incept-portfolio	
+	{
+	color: #666666;
+    font-size: 11px;
+    padding: 0px 0px 6px 0px; display: block; height: 14px;
+	}
+	
+#mfc {
+	padding: 5px 5px 5px 0px;  margin: 15px 0px 15px 0px; overflow: hidden; color: #666; font-size: 13px;
+}	
+		
+table.calc-nomp { width: 100%; margin: 0px;}
+table.calc-nomp th { background-color: #99CC99; text-align: center; font-weight: bold; font-size: 12px; padding: 7px; color: #fff; text-shadow: 1px 1px 1px #000; border: 1px solid #fff; }
+table.calc-nomp td { font-size: 13px; color: #666666; padding: 5px; border: 0px solid #eaeaea; }
+table.calc-nomp td .val { color: #666; padding: 5px; display:block; background: #ccc; width: 150px;}
+table.calc-nomp td input[type=radio], input.radio { border: none; }
+table.calc-nomp td input, table.calc td select {background-color: #F1F1F1;
+    border: 1px solid #CCCCCC;
+    color: #333;
+    font-size: 12px;
+    line-height: normal;
+    padding: 5px 3px;
+	}
+	
+	table.calc td select option { line-height:1.5}
+	
+
+
+
+/* Calc 1W to 1Y */
+#content #calc-nav { overflow: hidden; margin-bottom: 20px;}
+	#content #calc-nav  ul {padding:0; margin:0; list-style:none; }
+	#content #calc-nav  ul li {display:inline; margin: 0px 0 0 1px; padding:0; float:left; text-indent: 0; font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, sans-serif; background: #BA0C2F; line-height: normal;}
+	#content #calc-nav  li:last-child { border-right: none; }
+	#content #calc-nav  ul li a {padding: 5px 15px 5px 15px; color: #fff; display:block; font-size: 13px; text-decoration: none; text-transform: uppercase; }
+	#content #calc-nav  a:hover, #calc-nav  a.current { color: #fff; background-color:#999;}
+
+#posttext { margin: 20px 0px 0px 0px;}
+
+#error,#tableerror,#fielderror { padding:10px 10px 10px 45px; border:#e8aaad solid 1px; background:#f9e5e6 url('../icons/error.png') 10px 50% no-repeat; color: #b50007; display: none; margin: 10px 0px 10px 0px; font-size: 12px;}
+#benchinfo{padding:10px 10px 10px 45px; border:#E8E3AA solid 1px; background:#f9f9e5 url('../icons/info.png') 10px 50% no-repeat; color: #333; margin: 10px 0px 10px 0px; font-size: 12px;}
+
+#showgraph { position: relative;}
+#spinner { position: absolute;
+			top : 50%;
+			left : 50%;
+}
+
+#viewgraph {background-color:#ba0c2f; padding:5px 20px 6px; color:#fff; 
+	font-size:11px; text-decoration:none; font-weight:bold;
+	clear:both;
+	margin:15px 0 0 0;
+	color:#fff; border:none;
+}

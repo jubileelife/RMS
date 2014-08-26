@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+
+            <ui:define name="left">
+                <ui:include src="menu.xhtml"/>
+            </ui:define>
+ 
+            <ui:define name="content">
+
+                <h:form id="reqDetails">
+
+                    <p:panel header="Request Detail Screen"> 
+
+ 
+                        <p:tabView activeIndex="#{request_task.taskTabIndex}">
+
+                            <p:tab id="tab-1" title="Request Detail">
+
+                                <p:inputText type="hidden"  id="reqAssign8" value="#{req_Assignment.assignmentAssignId}" readonly="true"></p:inputText>
+
+
+                                <p:panelGrid columns="6" style="margin-top:-10px;width: 855px;">
+
+
+                                    <f:facet name="header">  
+                                        Request Details 
+                                    </f:facet>  
+
+
+                                    <p:outputLabel id="no8" value="Request No"></p:outputLabel>
+                                    <p:inputText id="requestno" value="#{req_Assignment.assignmentScreenReqId}" readonly="true"/>
+
+                                    <p:outputLabel id="rqdate8" value="Request Date"></p:outputLabel>
+                                    <p:inputText id="reqdate8" value="#{req_Assignment.assignmentScreenReqDate}" readonly="true"></p:inputText>
+
+                                    <p:outputLabel id="Requeststatus8" value="Status"></p:outputLabel>
+                                    <p:inputText id="reqstatus8" value="#{req_Assignment.assignmentScreenReqStatus}" readonly="true"/>
+
+
+                                    <p:outputLabel id="rtype8" value="Type"></p:outputLabel>
+                                    <p:inputText id="reqttype8" value="#{req_Assignment.assignmentScreenReqType}" readonly="true"/>
+                                    <p:outputLabel id="sys8" value="System"></p:outputLabel>
+
+                                    <p:inputText id="systemmodule8" value="#{req_Assignment.assignmentScreenReqSystem}" readonly="true"/>
+
+                                    <p:outputLabel id="sysmod8" value="System Module"></p:outputLabel>
+
+                                    <p:inputText id="systemcomp8" size="50" value="#{req_Assignment.assignmentScreenReqSystemMod}" readonly="true"/>
+
+                                    <p:outputLabel id="App_date8" value="Requester"></p:outputLabel>
+
+                                    <p:inputText id="txt_app_date8" value="#{req_Assignment.assignmentScreenRequester}" readonly="true"/>
+
+                                    <p:outputLabel id="req_pryarty8" value="Request Priority"></p:outputLabel>
+
+                                    <p:inputText id="txt_exp_del_date28" value="#{req_Assignment.assignmentScreenReqPriority}" readonly="true"/>
+
+                                    <p:outputLabel id="req_pryarty348" value="Approved Date"></p:outputLabel>
+
+                                    <p:inputText id="txt_exp_del_date4428" value="#{req_Assignment.assignmentScreenReqApproveDate}" readonly="true"/>
+
+                                    <p:outputLabel id="req_pryarty48" value="Approved By"></p:outputLabel>
+
+                                    <p:inputText id="txt_exp_del_date428" value="#{req_Assignment.assignmentScreenApproveBy}" readonly="true"/>
+
+
+                                    <p:outputLabel id="req_pryarty408" value="Request Completion Date"></p:outputLabel>
+
+                                    <p:inputText id="txt_exp_del_date4028" value="#{req_Assignment.assignmentreqtargetdate}" readonly="true"/>
+
+
+                                </p:panelGrid>
+
+                                <!--                                    <p:outputLabel id="exp_date8" value="Expected Delivery Date"></p:outputLabel>
+
+                                    <p:inputText id="txt_EXP_date8" value="#{req_Assignment.assignmentScreenReqExpectedDate}" readonly="true"/>-->
+
+
+                                
+                                
+                                <br></br>
+                                <p:panelGrid columns="1" >
+                                    <f:facet name="header">  
+                                        Request Title
+                                    </f:facet>  
+                                    <p:inputText id="reqtit8" value="#{req_Assignment.assignmentScreenReqTitle}" style="width: 830px" readonly="true"/>
+                                </p:panelGrid> 
+                                <br></br>
+
+                                <p:panelGrid columns="2">
+                                    <f:facet name="header">  
+                                        Requester Description  
+                                    </f:facet>    
+                                    <p:inputTextarea id="reqdesc8" rows="10" cols="50" style="width: 400px;" readonly="true" maxlength="600" value="#{req_Assignment.assignmentScreenReqDesc}"/> 
+
+                                    <f:facet name="header">  
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        Approval Comments  
+                                    </f:facet>    
+
+                                    <p:inputTextarea id="appcomm8" rows="10" cols="50" required="false" maxlength="600" style="width:400px" readonly="true" requiredMessage="Approval/Decline Comments Require." value="#{req_Assignment.assignmentScreenReqApprovDesc}"/>
+
+                                </p:panelGrid> 
+
+                                <p:panelGrid columns="1" style="margin-top:20px">
+                                    <f:facet name="header">  
+                                        Request Attachments  
+                                    </f:facet>  
+
+                                    <p:commandLink actionListener="#{req_Assignment.preDownload}" value="View Requester Attachment" style="#{req_Assignment.dlCheck}" ajax="false"  >
+                                        <p:fileDownload value="#{req_Assignment.download}" />
+                                    </p:commandLink>
+
+                                    <p:commandLink  actionListener="#{req_Assignment.preDownloadApprove}" value="View Approver Attachment"  style="#{req_Assignment.dlCheckAprove}" ajax="false"  >
+                                        <p:fileDownload value="#{req_Assignment.downloadApprov}" />
+                                    </p:commandLink>
+
+                                    <p:growl  showDetail="true" />
+                                </p:panelGrid>
+
+                            </p:tab>
+
+                            <p:tab id="tab-2" title="Request History">
+
+                                <p:remoteCommand  name="AutoRunMethod_reqDet" action="#{request_details.redirectRequestDetailTab(req_Assignment.assignmentScreenReqId,req_Assignment.assignmentAssignId)}" update="reqDetailTable" autoRun="true" />
+
+                                <p:confirmDialog styleClass="overlayDialog" message="Request Updated." widgetVar="myDialogReqDet" header="Request Updated." severity="alert" >
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="false" value="OK" oncomplete="myDialogReqDet.hide();"  />
+                                </p:confirmDialog>
+
+                                <p:panelGrid columns="2" style="margin-top:-10px;width: 850px;">
+
+
+                                    <f:facet name="header">  
+                                        Update Request
+                                    </f:facet>   
+                                    <p:row >
+                                        <p:column  colspan="4" width="50px;" style="text-align: left">
+                                            <p:outputLabel style=" margin-top:6px;" value="Request No"></p:outputLabel><br/>
+                                        </p:column>
+
+                                        <p:column  colspan="4" style="text-align: left">
+                                            <p:inputText id="requestID" style="margin-top:6px;" value="#{req_Assignment.assignmentScreenReqId}" readonly="true">
+
+                                            </p:inputText><br/>
+                                        </p:column>
+
+                                        <br/>
+
+                                        <p:column  colspan="4" style="text-align: left">
+                                            <p:outputLabel style=" margin-top:6px;"  value="Date"></p:outputLabel><br/>
+                                        </p:column>
+
+                                        <p:column  colspan="4" style="text-align: left">
+                                            <p:inputText id="reqdate" value="#{currentDate}"  readonly="true">
+                                                <f:convertDateTime pattern="dd-MMM-yyyy hh:mm:ss a" type="date" />
+                                            </p:inputText><br/><br/>
+                                        </p:column>
+
+
+
+                                        <p:column  colspan="4" style="text-align: left">
+                                            <p:outputLabel style=" margin-top:2px;"  value="Request Status"></p:outputLabel><br/>
+                                        </p:column>
+
+
+                                        <p:column  colspan="4" style="text-align: left">
+                                            
+                                            <p:inputText value="#{req_Assignment.assignmentScreenReqStatus}" readonly="true"/>
+                    
+                                        </p:column> 
+
+
+
+                                    </p:row>
+
+
+                                    <p:row>
+
+                                        <p:column  colspan="3" rowspan="3">
+
+                                            <p:inputTextarea rows="10" cols="70" required="false" onblur="javascript: if (this.value == '') {
+                                                        this.value = 'Please Enter Your Remarks.';
+                                                    }" onclick="javascript: if (this.value == 'Please Enter Your Remarks.') {
+                                                                this.value = '';
+                                                            }" onkeyup="javascript: if (this.value == 'Please Enter Your Remarks.') {
+                                                                        this.value = '';
+                                                                    }" maxlength="600" style="width: 650px" value="#{request_details.reqRemarks}" />
+                                            <br/><br/>
+                                            <p:fileUpload id="filereqremarks" update="mesgUpload"  fileUploadListener="#{request_details.upload}"  mode="advanced" dragDropSupport="false" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png|txt)$/" />
+                                            <p:growl id="mesgUpload" showDetail="true" />    
+                                        </p:column>
+
+                                        <p:outputLabel style="text-align: center;color: red;" value="#{request_details.errorMesg}" />
+
+                                        <p:column  colspan="3" style="align: right"> 
+                                            <p:commandButton  style=" margin-top:10px;" ajax="true" value="Update Request" action="#{request_details.onClickRequestUpdateSubmitFromUser(req_Assignment.assignmentScreenReqId,req_Assignment.assignmentScreenReqStatusID)}"  update="@form" />                 &nbsp;
+                                        </p:column>
+
+                                    </p:row>
+
+
+                                </p:panelGrid>    
+
+                                <p:panelGrid columns="2" style="margin-top:10px;width: 850px;">
+
+                                    <f:facet name="header">  
+                                        Request History
+                                    </f:facet>   
+
+                                    <p:dataTable  styleClass="textStyle" rows="10" paginator="false" id="reqDetailTable" filteredValue="#{request_details.filtered}" value="#{request_details.reqDetailTableData}"  var="eachItemreqDet" emptyMessage="No Record Found.">
+                                        <p:column sortBy="#{eachItemreqDet.serialNo}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Serial No"/>
+                                            </f:facet>
+                                            <h:outputText  value="#{eachItemreqDet.serialNo}"/>
+                                        </p:column>
+
+                                        <p:column sortBy="#{eachItemreqDet.reqDate}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Date"/>
+                                            </f:facet>
+                                            <h:outputText  value="#{eachItemreqDet.reqDate}"/>
+                                        </p:column>
+
+                                        <p:column sortBy="#{eachItemreqDet.reqStatus}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Status"/>
+                                            </f:facet>
+                                            <h:outputText  value="#{eachItemreqDet.reqStatus}"/>
+                                        </p:column>
+
+                                        <p:column sortBy="#{eachItemreqDet.updateUser}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="User"/>
+                                            </f:facet>
+                                            <h:outputText  value="#{eachItemreqDet.updateUser}"/>
+                                        </p:column>
+
+                                        <p:column sortBy="#{eachItemreqDet.reqRemarks}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="Remarks"/>
+                                            </f:facet>
+                                            <h:outputText  value="#{eachItemreqDet.reqRemarks}"/>
+                                        </p:column>
+
+                                        <p:column sortBy="#{eachItemreqDet.reqFileAttach}" 
+                                                  filterMatchMode="startsWith">
+                                            <f:facet name="header">
+                                                <h:outputText value="File Attachement"/>
+                                            </f:facet>
+                                            <p:commandLink actionListener="#{request_details.preDownloadF(eachItemreqDet.reqFileAttach)}" disabled="#{eachItemreqDet.enable}" value="#{eachItemreqDet.showAttachMesg}"  ajax="false"  >
+                                                <p:fileDownload value="#{request_details.download}" />
+                                            </p:commandLink>
+                                        </p:column>
+
+                                        <p:column >
+                                            <f:facet name="header">
+                                                <h:outputText value="Action"/>
+                                            </f:facet>
+
+                                            <p:commandButton update=":reqDetails" value="Detail" icon="ui-icon-extlink" actionListener="#{request_details.onClickReqDetail(eachItemreqDet.reqId,eachItemreqDet.reqDate,eachItemreqDet.updateUser,eachItemreqDet.reqRemarks)}">
+                                            </p:commandButton>
+
+                                        </p:column>
+
+                                    </p:dataTable>
+
+                                    <p:confirmDialog styleClass="overlayDialogConfrm" id="reqdetdailog" widgetVar="myDataDialog" header="Request Deatail.">
+
+                                        <p:panelGrid columns="2" style="margin-top:10px;width: 850px;">
+                                            <p:outputLabel style=" margin-top:6px;" value="Request No"></p:outputLabel>
+                                            <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqID}" readonly="true" />
+
+                                            <p:outputLabel style=" margin-top:6px;" value="Date"></p:outputLabel>
+                                            <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqDate}" readonly="true" />
+
+                                            <p:outputLabel style=" margin-top:6px;" value="Update By"></p:outputLabel>
+                                            <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqUpdateBy}" readonly="true" />
+
+                                            <p:outputLabel style=" margin-top:6px;" value="Remarks"></p:outputLabel>
+                                            <p:inputTextarea  rows="10" cols="50"  maxlength="60" style="width:400px" readonly="true"  value="#{request_details.ddReqRemarks}"/>
+                                        </p:panelGrid>
+
+
+                                    </p:confirmDialog>  
+
+                                </p:panelGrid>     
+
+                                <p:outputPanel id="pageContentPanel"></p:outputPanel>
+
+                            </p:tab>
+
+
+                            <p:tab id="tab-3" title="Solution">
+
+                                <br/>
+
+                                <p:dataTable style="width:860px;"  styleClass="textStyle" rows="10" paginator="false" id="reqDetailSolTable2" filteredValue="#{req_Assignment.solutionFilter}" value="#{req_Assignment.solutionDataTable}"  var="eachItemreqSol" emptyMessage="No Record Found.">
+                                    <p:column sortBy="#{eachItemreqSol.serialNo}" 
+                                              filterMatchMode="startsWith">
+                                        <f:facet name="header">
+                                            <h:outputText value="Serial No"/>
+                                        </f:facet>
+                                        <h:outputText  value="#{eachItemreqSol.serialNo}"/>
+                                    </p:column>
+
+                                    <p:column sortBy="#{eachItemreqSol.solutionUpdateDate}" 
+                                              filterMatchMode="startsWith">
+                                        <f:facet name="header">
+                                            <h:outputText value="Date"/>
+                                        </f:facet>
+                                        <h:outputText  value="#{eachItemreqSol.solutionUpdateDate}"/>
+                                    </p:column>
+
+                                    <p:column sortBy="#{eachItemreqSol.solutionUpdateBy}" 
+                                              filterMatchMode="startsWith">
+                                        <f:facet name="header">
+                                            <h:outputText value="Post By"/>
+                                        </f:facet>
+                                        <h:outputText  value="#{eachItemreqSol.solutionUpdateBy}"/>
+                                    </p:column>
+
+                                    <p:column sortBy="#{eachItemreqSol.solution}" 
+                                              filterMatchMode="startsWith">
+                                        <f:facet name="header">
+                                            <h:outputText value="Solution"/>
+                                        </f:facet>
+                                        <h:outputText  value="#{eachItemreqSol.solution}"/>
+                                    </p:column>
+
+                                    <p:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Action"/>
+                                        </f:facet>
+
+                                        <p:commandButton update=":reqDetails" value="Detail" icon="ui-icon-extlink" actionListener="#{request_details.onClickReqSolDetail(req_Assignment.assignmentScreenReqId,eachItemreqSol.solutionUpdateDate,eachItemreqSol.solutionUpdateBy,eachItemreqSol.solution)}">
+                                        </p:commandButton>
+
+                                    </p:column>
+
+
+                                </p:dataTable>
+
+                                <p:confirmDialog styleClass="overlayDialogConfrm" id="reqsoldetdailog2" widgetVar="mySolDataDialog" header="Solution Deatail.">
+
+                                    <p:panelGrid columns="2" style="margin-top:10px;width: 850px;">
+                                        <p:outputLabel style=" margin-top:6px;" value="Request No"></p:outputLabel>
+                                        <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqID}" readonly="true" />
+
+                                        <p:outputLabel style=" margin-top:6px;" value="Date"></p:outputLabel>
+                                        <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqDate}" readonly="true" />
+
+                                        <p:outputLabel style=" margin-top:6px;" value="Update By"></p:outputLabel>
+                                        <p:inputText  style="margin-top:6px;" value="#{request_details.ddReqUpdateBy}" readonly="true" />
+
+                                        <p:outputLabel style=" margin-top:6px;" value="Remarks"></p:outputLabel>
+                                        <p:inputTextarea  rows="10" cols="50"  maxlength="60" style="width:400px" readonly="true"  value="#{request_details.ddReqRemarks}"/>
+                                    </p:panelGrid>
+
+
+                                </p:confirmDialog>  
+
+
+                            </p:tab>
+
+<!--                            <p:ajax event="tabChange" listener="#{request_task.onTabChange}" />-->
+
+
+                        </p:tabView>
+
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

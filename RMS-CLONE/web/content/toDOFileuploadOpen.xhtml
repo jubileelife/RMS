@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+    <h:body>
+          <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+
+            <ui:define name="left">
+
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <p:panel header="To Do File Uploading">
+                        <p:panelGrid columns="8" style="margin-top:20px">
+                            <f:facet name="header">  
+                                File Upload Open (Display Item)
+                            </f:facet>  
+
+                            <p:outputLabel id="tid" value="Task Id"></p:outputLabel>
+                            <p:inputText id="taskid" value="001" readonly="true"/>
+
+                            <p:outputLabel id="modtype" value="Module Type"></p:outputLabel>
+                            <p:inputText id="moduletype" value="Form" readonly="true"></p:inputText>
+
+                            <p:outputLabel id="mod" value="Module"></p:outputLabel>
+                            <p:inputText id="module" value="pay Initiation" readonly="true"/>
+
+                             <p:outputLabel id="fdate" value="File Uploading Date"></p:outputLabel>
+                            <p:inputText id="fileuploaddate" value="sysdate" readonly="true"/>
+                        </p:panelGrid>
+                       
+                          <p:panelGrid columns="1" style="margin-top:20px">
+                        <f:facet name="header">  
+                             File Uploading  
+                         </f:facet>  
+                         
+                        
+                         
+                         <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                                       update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png|txt)$/" />
+
+                         
+                     </p:panelGrid>
+                      <br></br>
+                   <h:panelGrid columns="3">
+                   <p:growl id="messages" showDetail="true"/>
+                   <p:outputLabel value=""/>
+                    <p:commandButton id="insert" value="To Do FileUpload" update="@form"/>                 
+                </h:panelGrid>
+                        
+                    </p:panel>
+                </h:form>
+            </ui:define>
+          </ui:composition>
+    </h:body>
+</html>
+

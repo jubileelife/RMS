@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+ 
+            <ui:define name="left">
+                <ui:include src="menu.xhtml"/>
+            </ui:define>
+
+            <ui:define name="content">
+
+                <h:form id="reqApprov">
+                     
+                   
+                    <p:panel header="Approval/Decline Screen"> 
+                        <p:panelGrid columns="6" style="margin-top:10px;width: 855px;">
+                            <f:facet name="header">  
+                                Request Details 
+                            </f:facet>  
+
+                            <p:outputLabel id="no" value="Request No"></p:outputLabel>
+                            <p:inputText id="requestno" value="#{Req_Approval.approvalScreenReqId}" readonly="true"/>
+
+                            <p:outputLabel id="rqdate" value="Request Date"></p:outputLabel>
+                            <p:inputText id="reqdate" value="#{Req_Approval.approvalScreenDate}" readonly="true"></p:inputText>
+
+                            <p:outputLabel id="Requeststatus" value="Status"></p:outputLabel>
+                            <p:inputText id="reqstatus" value="New" readonly="true"/>
+
+
+                            <p:outputLabel id="rtype" value="Type"></p:outputLabel>
+                            <p:inputText id="reqttype" value="#{Req_Approval.approvalScreenType}" readonly="true"/>
+                            <p:outputLabel id="sys" value="System"></p:outputLabel>
+
+                            <p:inputText id="systemmodule" value="#{Req_Approval.approvalScreenSystem}" readonly="true"/>
+
+                            <p:outputLabel id="sysmod" value="System Module"></p:outputLabel>
+
+                            <p:inputText id="systemcomp" value="#{Req_Approval.approvalScreenSystemMod}" readonly="true"/>
+
+                            <p:outputLabel id="App_date" value="Requester"></p:outputLabel>
+
+                            <p:inputText id="txt_app_date" value="#{Req_Approval.approvalScreenRequester}" readonly="true"/>
+
+                            <p:outputLabel id="req_pryarty" value="Request Priority"></p:outputLabel>
+
+                            <p:inputText id="txt_exp_del_date2" value="#{Req_Approval.approvalScreenReqPriority}" readonly="true"/>
+
+                            
+                        </p:panelGrid>
+
+                        
+<!--                            <p:outputLabel id="exp_date" value="Expected Delivery Date"></p:outputLabel>
+                            
+                            <p:calendar title="exp" pattern="dd-MMM-yyyy" value="#{Req_Approval.expectedDate}" id="expDate"   />
+                            --> 
+                        
+                        <p:confirmDialog styleClass="overlayDialog" message="Request Approved." widgetVar="myDialogApp" header="Request Approved." severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="false" value="OK" action="#{Req_Approval.redirectUrlApprove()}"  />
+                      </p:confirmDialog>
+                      
+                         <p:confirmDialog styleClass="overlayDialog" message="Request Rejected." widgetVar="myDialogRej" header="Request Rejected." severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="false" value="OK" action="#{Req_Approval.redirectUrlApprove()}"  />
+                      </p:confirmDialog>
+                    
+                        
+                        <br></br>
+                        <p:panelGrid columns="1" >
+                            <f:facet name="header">  
+                                Request Title
+                            </f:facet>  
+                            <p:inputText id="reqtit" value="#{Req_Approval.approvalScreenReqTitle}" style="width: 830px" readonly="true"/>
+                        </p:panelGrid> 
+                        <br></br>
+
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">  
+                                Requester Description  
+                            </f:facet>    
+                            <p:inputTextarea id="reqdesc" rows="10" cols="50" style="width: 400px;" readonly="true" maxlength="600" value="#{Req_Approval.approvalScreenReqDesc}"/> 
+
+                            <f:facet name="header">  
+                                                                                                                                                                                                                                                                                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                Approval Comments  
+                            </f:facet>    
+
+                            <p:inputTextarea id="appcomm" rows="10" cols="50" required="false" maxlength="600" style="width:400px"  requiredMessage="Approval/Decline Comments Require." value="#{Req_Approval.approvalScreenApproveComment}"/>
+
+                        </p:panelGrid> 
+
+                        <p:panelGrid columns="2" style="margin-top:20px">
+                            <f:facet name="header">  
+                                File Uploading  
+                            </f:facet>  
+
+                            <p:fileUpload fileUploadListener="#{Req_Approval.upload}" mode="advanced" dragDropSupport="false"
+                                         update="messages" sizeLimit="100000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png|txt)$/" />
+                               
+                                <p:commandButton onclick="dlform.form.target = '_blank'" actionListener="#{Req_Approval.preDownload}" value="View Requester Attachment" disabled="#{Req_Approval.dl}" ajax="false"  >
+                                    <p:fileDownload value="#{Req_Approval.download}" />
+                                </p:commandButton>
+                            <p:growl id="messages" showDetail="true" />
+                        </p:panelGrid>
+
+                        
+                        <p:outputLabel style="text-align: center;color: red;" value="#{Req_Approval.errorMesg}" />
+                        
+                        <p:panelGrid columns="2" >
+                            <p:commandButton id="approve" ajax="true" value="Approve"  action="#{Req_Approval.approveSubmit()}"  update="@form" />
+                            <p:commandButton id="reject"  ajax="true"  value="Reject"   action="#{Req_Approval.approveReject()}"  update="@form" />
+                        </p:panelGrid>
+                        
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

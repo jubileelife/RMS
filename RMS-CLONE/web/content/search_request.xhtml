@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head> 
+        <title> supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+ 
+            <ui:define name="title">
+                <h:outputText value="Request Search"></h:outputText>
+            </ui:define>
+            <ui:define name="left">
+
+            </ui:define>
+            <ui:define name="content">
+
+                <p:layout  style="height: 480px;">
+
+                    <p:layoutUnit position="west" size="200" header="Messages And News" collapsible="true">
+
+                        <f:verbatim >
+                            <marquee direction="UP" style="height: 400PX;font-family: Arial;font-size: 15px;font-weight: bold;color: blue;" scrollamount="3" onmouseover="this.stop();"  onmouseout="this.start();" >
+                                Latest News!<br/><br/><span style="font-family: Arial;font-size: 15px;font-weight: normal;color: black;">New SW Support System going to be live this August 2014.</span>
+                                <br/><br/>
+                                <span style="font-family: Arial;font-size: 15px;font-weight: bold;color: blue;">SW Support User Guide</span>
+                                <br/><br/><span style="font-family: Arial;font-size: 15px;font-weight: normal;color: black;">Please download new system guide. <a href="javascript:;" >Click Here!</a></span>   
+                                <br/><br/>
+                                <span style="font-family: Arial;font-size: 15px;font-weight: bold;color: blue;">System Facility Access Request</span>
+                                <br/><br/><span style="font-family: Arial;font-size: 15px;font-weight: normal;color: black;">IT department pleased to announce that we have almost automate the system facility access request process.  </span>   
+
+                            </marquee>
+                        </f:verbatim>
+
+
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center">
+
+                        <h:form>
+
+                            <p:panel header="Search Request" >
+                                
+                                
+                                <table align="center">
+                                    <tr>
+                                        <td><p:outputLabel /></td>
+                                        <td><p:inputText onblur="javascript: if (this.value == '') {
+                                                        this.value = 'Search By Request No';
+                                                    }" onclick="javascript: if (this.value == 'Search By Request No') {
+                                                                this.value = '';
+                                                            }" onkeyup="javascript: if (this.value == 'Search By Request No') {
+                                                                        this.value = '';
+                                                                    }" value="#{request_details.searchReqId}" id="txt_tktno" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p:outputLabel /></td>
+                                        <td><p:inputText onblur="javascript: if (this.value == '') {
+                                                        this.value = 'Search By Request Title';
+                                                    }" onclick="javascript: if (this.value == 'Search By Request Title') {
+                                                                this.value = '';
+                                                            }" onkeyup="javascript: if (this.value == 'Search By Request Title') {
+                                                                        this.value = '';
+                                                                    }" value="#{request_details.searchReqTitle}" id="txt_title"/></td>
+                                    </tr>
+                                    <tr style="text-align: center">
+                                        <td></td>
+                                        <td >
+                                            <p:commandButton value="Search" action="#{request_details.updateReqDataTableS()}" style="text-align: center" />
+                                        </td>
+
+                                    </tr>
+                                </table>
+
+
+
+
+                            </p:panel>
+                            <br/>
+                            <br/>
+                            <p:dataTable  styleClass="textStyle"  rows="10" paginator="false" id="reqDetailTableStatus" filteredValue="#{update_task.filteredStatus}" value="#{update_task.tableDataStatus}"  var="eachItemreqreqS" emptyMessage="No Record Found.">
+                               
+                                
+                                <p:column style="font-weight: bold;font-size: 12px;"  sortBy="#{eachItemreqreqS.status}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText  value="Status"/>
+                                </f:facet>
+                                    
+                                    <p:commandLink style="width: 194px;margin-top: 5px;" value="#{eachItemreqreqS.status}" ajax="false" update="@form" action="#{request_details.updateReqDataTableStaus(eachItemreqreqS.reqId)}" >
+                                        
+                                    </p:commandLink>   
+                                    
+                                </p:column>
+
+
+                                <p:column style="font-weight: bold;font-size: 12px;" sortBy="#{eachItemreqreqS.counts}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Counts"/>
+                                </f:facet>
+                                    <h:outputText  value="#{eachItemreqreqS.counts}"/>
+                                 </p:column>
+
+                            </p:dataTable>
+               
+                            <p:remoteCommand name="AutoRunMethod" action="#{update_task.updateTaskStatusUpdateDataTable()}" update="reqDetailTableStatus" autoRun="true" />
+           
+                        
+                        </h:form>
+
+                    </p:layoutUnit>
+
+
+
+                </p:layout>
+                </ui:define>
+        </ui:composition>
+    </body>
+</html>

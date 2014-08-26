@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+             <ui:define name="left">
+                 <ui:include src="menu.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                <h:form>
+                    <p:panel header="Module Activity Screen Request# 100 Task: Analysis, Task Category: Requirement Gathering, Expected Delivery date required in next to caption for updation">
+                        <table align="right">
+                            <tr align="right"><td align="right">
+                            <h:panelGrid columns="2">
+                             
+                            
+                                <p:calendar pattern="dd/MM/yyyy"   />
+                                <p:commandButton id="upd" value="Expected Delivery Date" action="assignment.xhtml?faces-redirect=true"/>   
+                              
+                         </h:panelGrid>
+                                </td></tr>
+                        </table>
+                         <p:panelGrid columns="5" style="margin-top:10px">
+                         <f:facet name="header" >  
+                            To Do List
+                         </f:facet>
+                             
+                             <p:outputLabel id="tid" value="Task Id"></p:outputLabel>
+                             
+                             <p:outputLabel id="act" value="Module Type"></p:outputLabel>
+                             
+                             <p:outputLabel id="sdate" value="Module"></p:outputLabel>
+                             
+                               <p:outputLabel id="todo" value="Description"></p:outputLabel>
+                            
+                               <p:outputLabel id="ad" value="Add"></p:outputLabel>
+                                
+                               <p:inputText id="taskid" value="" style="width: 30px"/>
+                               
+                          
+                            <p:selectOneMenu value="Module Type">
+                                     <f:selectItem itemLabel="Select Module Type" itemValue="" />
+                                     <f:selectItem itemLabel="Form" itemValue="A" />
+                                     <f:selectItem itemLabel="Report" itemValue="D" />
+                                     <f:selectItem itemLabel="Query" itemValue="D" />
+                                 </p:selectOneMenu>     
+                             
+                              
+                             
+                             <p:inputText id="reqtit1" value="PAY INITIATION"  style="width: 250px"/>
+                             
+                             <p:inputText id="req" value=""  style="width: 520px"/>
+                    
+                               <p:commandButton id="insert" value="+" update="@form"/> 
+                         
+                         </p:panelGrid>
+                        
+                       
+                        <br></br>
+                       
+                       
+                     </p:panel>
+                      <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                     emptyMessage="No Record found with given criteria">
+
+                          <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Task Id"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                          
+                          
+                          <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Module Type"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                               
+                               <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Module"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                              
+                              <p:column>  
+                                <f:facet name="header">
+                                    <h:outputText value="Description"/>
+                                </f:facet>
+                                <h:outputText value="1111"/>
+                            </p:column>
+                              
+                          
+                          
+                              
+                               
+                           </p:dataTable>
+                    
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

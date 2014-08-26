@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>One Window</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/WEB-INF/template/maintemplate.xhtml" >
+
+                <ui:define name="left">
+
+                </ui:define>
+
+                <ui:define name="content" >
+
+                    <div style="margin-top:10px; width: 960px;text-align: center">
+
+
+
+                        <p:tabView activeIndex="0">
+                            <p:tab title="Request Detail">
+                                <h:form>
+
+                                    <p:panel header="Request Details ">
+                                        <p:panelGrid columns="9" style="margin-top:20px">
+                                            <f:facet name="header">  
+                                                Auto Generated  
+                                            </f:facet>  
+
+                                            <p:outputLabel id="no" value="Request No"></p:outputLabel>
+                                            <p:inputText id="requestno" value="Auto Generated" readonly="true"/>
+
+                                            <p:outputLabel id="date" value="Date"></p:outputLabel>
+                                            <p:inputText id="reqdate" value="Auto populated" readonly="true"></p:inputText>
+
+                                            <p:outputLabel id="Requeststatus" value="Status"></p:outputLabel>
+                                            <p:inputText id="reqstatus" value="New" readonly="true"/>
+                                            
+                                            <p:outputLabel id="Request_priorty" value="Request Priority"></p:outputLabel>
+                                            <p:inputText id="txt_req_priority" value="low" readonly="true"/>
+
+                                        </p:panelGrid>
+
+                                        <p:panelGrid columns="6" style="margin-top:20px">
+                                            <f:facet name="header">  
+                                                System Component  
+                                            </f:facet>  
+                                            <p:outputLabel id="rtype" value="Type"></p:outputLabel>
+                                            <p:inputText id="txt_rtype"/>
+                                            <p:outputLabel id="sys" value="System"></p:outputLabel>
+
+                                            <p:inputText id="txt_sys"/>
+
+                                            <p:outputLabel id="sysmod" value="System Module"></p:outputLabel>
+
+                                            <p:inputText id="txt_sysmod"/>
+                                        </p:panelGrid>
+                                        <br></br>
+
+                                        <p:panelGrid columns="1">
+                                            <f:facet name="header">  
+                                                Request Title   
+                                            </f:facet>  
+
+
+                                            <p:inputText id="reqtit" value="" style="width: 660px"/>
+                                        </p:panelGrid>
+                                        <br></br>
+                                        <p:panelGrid columns="1">
+                                            <f:facet name="header">  
+                                                Request Description  
+                                            </f:facet>  
+                                            <p:inputTextarea id="reqdesc" rows="10" cols="50" required="true" maxlength="60" style="width: 660px" value=""/>
+                                        </p:panelGrid>
+
+
+
+
+
+                                        <h:panelGrid columns="3">
+                                            <p:growl id="messages" showDetail="true"/>
+                                            <p:outputLabel value=""/>
+
+                                        </h:panelGrid>
+                                    </p:panel>
+
+
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="Approval Detail">
+                                <h:form>
+                                    <p:panel header="Approval/Decline Screen"> 
+                                        <p:panelGrid columns="6" style="margin-top:10px">
+
+                                            <f:facet name="header">  
+                                                Request Details 
+                                            </f:facet>  
+
+                                            <p:outputLabel id="no" value="Request No"></p:outputLabel>
+                                            <p:inputText id="requestno" value="100" readonly="true"/>
+
+                                            <p:outputLabel id="date" value="Date"></p:outputLabel>
+                                            <p:inputText id="reqdate" value="01-04-2014" readonly="true"></p:inputText>
+
+                                            <p:outputLabel id="Requeststatus" value="Status"></p:outputLabel>
+                                            <p:inputText id="reqstatus" value="New" readonly="true"/>
+
+
+                                            <p:outputLabel id="rtype" value="Type"></p:outputLabel>
+                                            <p:inputText id="reqttype" value="Modification" readonly="true"/>
+                                            <p:outputLabel id="sys" value="System"></p:outputLabel>
+
+                                            <p:inputText id="systemmodule" value="CLAS" readonly="true"/>
+
+                                            <p:outputLabel id="sysmod" value="System Module"></p:outputLabel>
+
+                                            <p:inputText id="systemcomp" value="Auto Underwriting" readonly="true"/>
+                                            
+                                            <p:outputLabel id="req_detail_id" value="Request Priority"></p:outputLabel>
+
+                                            <p:inputText id="txt_req_det_priorty" value="low" readonly="true"/>
+                                            
+                                            <p:outputLabel id="Appr_date" value="Approved Date"></p:outputLabel>
+
+                                            <p:inputText id="txt_Appr_date" value="10-02-2014" readonly="true"/>
+                                            
+                                            <p:outputLabel id="req_Appr_by" value="Approved By"></p:outputLabel>
+
+                                            <p:inputText id="txt_req_Appr_by" value="Tahir Aziz sb" readonly="true"/>
+
+                                        </p:panelGrid>
+
+
+
+
+                                        <br></br>
+                                        <p:panelGrid columns="1">
+                                            <f:facet name="header">  
+                                                Request Title and Description  
+                                            </f:facet>  
+                                            <p:inputText id="reqtit" value="Changing in TSAR" style="width: 500px" readonly="true"/>
+                                        </p:panelGrid> 
+                                        <br></br>
+
+                                        <p:tabView id="tabView" dynamic="true" cache="true" style="width: 100%">
+                                            <p:tab id="tba1" title="Request">
+                                                <p:panelGrid columns="1">
+                                                    <f:facet name="header">  
+                                                        Request Description  
+                                                    </f:facet>    
+                                                    <p:inputTextarea id="reqdesc" rows="10" cols="50" style="width: 500px" readonly="true" maxlength="60" value="Approve by and Approve date displays on top of the panel."/> 
+                                                </p:panelGrid> 
+                                            </p:tab>
+
+                                            <p:tab id="tab2" title="Approval/Decline Remarks">
+                                                <p:panelGrid columns="1">
+                                                    <f:facet name="header">  
+                                                        Comments  
+                                                    </f:facet>    
+
+                                                    <p:inputTextarea id="appcomm" rows="10" cols="50" required="true" maxlength="60" style="width:500px" value="Approved, IT please Go Ahead. File also attaching"/>
+                                                </p:panelGrid>
+                                            </p:tab>
+                                        </p:tabView>
+
+
+
+
+                                        <br></br>
+                                        <h:panelGrid columns="3">
+                                            <p:growl id="messages" showDetail="true"/>
+                                                         
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="Solution">
+                                <h:form>
+                                    <p:panel>
+                                        <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                                     emptyMessage="No Record found with given criteria">
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Request Id"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Service Desk ID"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="SSR Solution ID"/>
+                                                </f:facet>
+                                                <h:outputText value="Dr.Adnan"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Solution"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="User Id"/>
+                                                </f:facet>
+                                                <h:outputText value="Cf:formula error"/>
+                                            </p:column>
+                                            
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Account Date 1 "/>
+                                                </f:facet>
+                                                <h:outputText value="Cf:formula error"/>
+                                            </p:column>
+
+                                           
+
+
+                                        </p:dataTable>
+
+                                    </p:panel>
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="History">
+                                <h:form>
+                                    <p:panel>
+
+
+                                        <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                                     emptyMessage="No Record found with given criteria" >
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Request Id"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Request Endorse No"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                           
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Request Status"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+                                            
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="User ID"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+                                            
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Transe Date"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Remarks"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+                                            
+                                             <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Request File URL"/>
+                                                </f:facet>
+                                                <h:outputText value="Dr.Adnan"/>
+                                            </p:column>
+                                           
+                                            
+
+
+
+                                           
+
+                                        </p:dataTable>
+                                    </p:panel>
+                                </h:form>
+
+                            </p:tab>
+                            <p:tab title="Activities">
+                                 <h:form>
+                                    <p:panel>
+                                        <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                                     emptyMessage="No Record found with given criteria">
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Activity Id"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Start Date"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="End Date"/>
+                                                </f:facet>
+                                                <h:outputText value="Dr.Adnan"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Activity Description"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Activity Items"/>
+                                                </f:facet>
+                                                <h:outputText value="Cf:formula error"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Activity Status"/>
+                                                </f:facet>
+                                                <p:commandButton id="asg" value="Detail" update="@form"/>
+                                            </p:column>
+
+
+                                        </p:dataTable>
+
+                                    </p:panel>
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="Acknowledge">
+
+                                <h:form>
+                                    <p:panel>
+                                        <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                                     emptyMessage="No Record found with given criteria">
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Request Id"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Type"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Approve By"/>
+                                                </f:facet>
+                                                <h:outputText value="Dr.Adnan"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Date"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Title"/>
+                                                </f:facet>
+                                                <h:outputText value="Cf:formula error"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Detail"/>
+                                                </f:facet>
+                                                <p:commandButton id="asg" value="Detail" update="@form"/>
+                                            </p:column>
+
+
+                                        </p:dataTable>
+
+                                    </p:panel>
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="UAT">                           
+                                                            
+                                      
+                            <div>
+                                 <h:form>
+                                    <p:panel>
+                                        <p:dataTable rows="10" paginator="true" id="requestdetail" var="item" 
+
+                                                     emptyMessage="No Record found with given criteria">
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="SNo:"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="ModuleType"/>
+                                                </f:facet>
+                                                <h:outputText value="1111"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Module"/>
+                                                </f:facet>
+                                                <h:outputText value="Module file"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="Comments"/>
+                                                </f:facet>
+                                                <h:outputText value="01-04-2014"/>
+                                            </p:column>
+
+                                            <p:column>  
+                                                <f:facet name="header">
+                                                    <h:outputText value="User Acknowledgement"/>
+                                                </f:facet>
+                                                <h:outputText value="Cf:formula error"/>
+                                            </p:column>
+
+
+                                        </p:dataTable>
+
+                                    </p:panel>
+                                     <f:facet name="footer">
+                                         <p:commandButton value="Approve for Life"/>
+                                         <p:commandButton  value="Findigs"/>
+                                     </f:facet>
+                                </h:form>
+                                        </div>
+                                        
+                                <div style="text-align:right;padding-top: 10px">
+                                    <h:form>
+                                   
+                                        <p:commandButton value="Approve for Live" onclick="#" >
+                                            
+                                        </p:commandButton>
+                                       
+                                        <p:commandButton value="Findigs" onclick="#">
+                                            
+                                        </p:commandButton>
+                                   
+                                    </h:form>
+                                    
+                                </div>
+                                        
+                                 
+                            </p:tab>
+
+                        </p:tabView>
+
+
+
+
+
+                    </div>
+                </ui:define>
+            </ui:composition>
+
+        </h:body>
+
+    </f:view>
+</html>
+

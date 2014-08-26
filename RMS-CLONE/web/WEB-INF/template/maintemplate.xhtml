@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+     >
+ 
+            <ui:insert name="top"><ui:include src="/WEB-INF/template/header.xhtml"/></ui:insert>
+        
+    
+ <h:body >
+   
+        <div id="content" class="center_content"  style="margin-left:auto!important;margin-right:auto!important;width:960px!important;background-color:white;">
+            <div id="nav-menu">
+            <ul>
+            <h:form >
+            <li><p:commandLink  action="/content/search_request.xhtml?faces-redirect=true" style="width:130px;" ajax="false"><h:outputText value="Home" /></p:commandLink> </li>
+            <li><p:commandLink  action="/content/requestInitiation.xhtml?faces-redirect=true" style="width:130px;"  ajax="false"><h:outputText value="Create Request" /></p:commandLink> </li>
+            <li><p:commandLink  action="/content/requestApprovalList.xhtml?faces-redirect=true" style="width:130px;" ajax="false"><h:outputText value="Approval Bucket" /></p:commandLink> </li>
+            <li style="#{user.menuAssignmentCheck}" ><p:commandLink  action="/content/assignmentList.xhtml?faces-redirect=true" style="width:150px;" ajax="false"><h:outputText value="Request Assignment" /></p:commandLink> </li>
+            <li style="#{user.menuRequestListCheck}" ><p:commandLink  action="/content/requestList.xhtml?faces-redirect=true" style="width:130px;" ajax="false"><h:outputText value="Request List" /></p:commandLink> </li>
+            </h:form>
+            </ul>
+        </div>
+            <div class="clear"></div>
+           <ui:insert name="content">Content</ui:insert>
+        </div>
+            
+        <div id="bottom">
+            <ui:insert name="bottom"><ui:include src="/WEB-INF/template/footer.xhtml"/></ui:insert>
+        </div>
+        
+        
+
+    </h:body>
+
+</html>

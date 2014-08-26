@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  
+    <h:body>
+        
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml" >
+  
+            <ui:define name="left">
+                
+            </ui:define>
+            
+            <ui:define name="content">
+                <h:form>
+                    
+                    <p:panel header="System Facilities Access Form" style="text-align: center">
+                        <p:panelGrid columns="8" style="margin-top: 10px">
+                            <f:facet name="header">
+                                     <h:outputText value="Request Information"/>
+                                 </f:facet>  
+                            
+                            <p:outputLabel id="faci_req_dat" value="Request Date"></p:outputLabel>
+                    <p:inputText id="txt_faci_date" value="Auto Generated" readonly="true"/>
+                    
+                    <p:outputLabel id="faci_req_by" value="Requested By"></p:outputLabel>
+                    <p:inputText id="txt_fac_req_by" value="Auto Generated" readonly="true"/>
+                    <p:outputLabel id="faci_emp_name" value="Employee Name"></p:outputLabel>
+                    <p:inputText id="txt_faci_emp_name" value="Auto Generated" readonly="true"/>
+                    <p:outputLabel id="faci_desig" value="Designation"></p:outputLabel>
+                    <p:inputText id="txt_faci_desig" value="Auto Generated" readonly="true"/>
+                    <p:outputLabel id="faci_dept" value="Designation"></p:outputLabel>
+                    <p:inputText id="txt_faci_dept" value="Auto Generated" readonly="true"/>
+                    
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="1"  style="margin-top: 20px">
+                           
+                            <f:facet name="header">
+                                <h:outputText value="System Required" style="text-align: center"/>
+                            </f:facet>
+                            <p:row>
+                            <h:panelGrid columns="3" id="cls">
+                                <p:column id="col_1_1" style="text-align: center;padding-top: 20PX">
+                                    <h:outputText value="CLASS"/>
+                                </p:column>
+                                <p:column id="col_cls_1">
+                                    <h:outputLabel for="yes" value="Roles Required"/>
+                                     <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:selectCheckboxMenu id="y_cls_1" label="one" filter="true" filterMatchMode="startsWith" panelStyle="150px" >
+                                       <f:selectItem itemLabel="one" itemValue="1"/>
+                                       <f:selectItem itemLabel="two" itemValue="2"/>
+                                       <f:selectItem itemLabel="three" itemValue="3"/>
+                                       
+                                   </p:selectCheckboxMenu>
+                                      <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:commandLink update="disp" value="Submit"/>
+                                   <p:outputPanel id="disp" style="width: 400px;padding-left: 5px;margin-top: 10px">
+                                       <p:dataList var="lst" emptyMessage="Nothing is selected">                                           
+                                       </p:dataList>                                       
+                                   </p:outputPanel>
+                                        
+                                </p:column>
+                                <p:column id="col_cls_2" style="text-align: left">
+                                    <h:outputLabel for="No" value="Roles Not Required" style="text-align: left"/>
+                                    <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:selectCheckboxMenu id="N_cls_2" label="one" filter="true" filterMatchMode="startsWith" panelStyle="250px" >
+                                       <f:selectItem itemLabel="one" itemValue="1"/>
+                                       <f:selectItem itemLabel="two" itemValue="2"/>
+                                       <f:selectItem itemLabel="three" itemValue="3"/>                                       
+                                   </p:selectCheckboxMenu>
+                                    <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:commandLink update="disp_1" value="Submit"/>
+                                   <p:outputPanel id="disp_1" style="width: 400px;padding-left: 5px;margin-top: 10px">
+                                       <p:dataList var="lst" emptyMessage="Nothing is selected">                                           
+                                       </p:dataList>                                       
+                                   </p:outputPanel>
+                                         
+                                        
+                                </p:column>
+                            </h:panelGrid>
+                            </p:row>
+                            <p:row>
+                            <h:panelGrid columns="3" id="hc">
+                                <p:column id="col_cls_3_1" style="text-align: center;padding-top: 20PX">
+                                    <h:outputText value="HCIS"/>
+                                </p:column>
+                                <p:column id="col_3_2">
+                                    <h:outputLabel for="yes" value="Roles Required"/>
+                                     <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:selectCheckboxMenu id="y_cls_3_1" label="one" filter="true" filterMatchMode="startsWith" panelStyle="150px" >
+                                       <f:selectItem itemLabel="one" itemValue="1"/>
+                                       <f:selectItem itemLabel="two" itemValue="2"/>
+                                       <f:selectItem itemLabel="three" itemValue="3"/>
+                                       
+                                   </p:selectCheckboxMenu>
+                                      <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:commandLink update="disp" value="Submit"/>
+                                   <p:outputPanel id="disp" style="width: 400px;padding-left: 5px;margin-top: 10px">
+                                       <p:dataList var="lst" emptyMessage="Nothing is selected">                                           
+                                       </p:dataList>                                       
+                                   </p:outputPanel>
+                                        
+                                </p:column>
+                                <p:column id="col_2_3" style="text-align: left">
+                                    <h:outputLabel for="No" value="Roles Not Required" style="text-align: left"/>
+                                    <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:selectCheckboxMenu id="N_col_2_3" label="one" filter="true" filterMatchMode="startsWith" panelStyle="250px" >
+                                       <f:selectItem itemLabel="one" itemValue="1"/>
+                                       <f:selectItem itemLabel="two" itemValue="2"/>
+                                       <f:selectItem itemLabel="three" itemValue="3"/>                                       
+                                   </p:selectCheckboxMenu>
+                                    <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:commandLink update="disp_1" value="Submit"/>
+                                   <p:outputPanel id="disp_1" style="width: 405px;padding-left: 5px;margin-top: 10px">
+                                       <p:dataList var="lst" emptyMessage="Nothing is selected">                                           
+                                       </p:dataList>                                       
+                                   </p:outputPanel>
+                                         
+                                        
+                                </p:column>
+                            </h:panelGrid>
+                                </p:row>
+                            <p:row>
+                            <h:panelGrid columns="3" id="dev">
+                                <p:column id="col_dev_1" style="text-align: center;padding-top: 20PX">
+                                    <h:outputText value="DEVELOPER"/>
+                                </p:column>
+                                <p:column id="col_dev_2">
+                                    <h:outputLabel for="y_dev_2" value="Roles Required"/>
+                                     <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:selectCheckboxMenu id="y_dev_2" label="one" filter="true" filterMatchMode="startsWith" panelStyle="150px" >
+                                       <f:selectItem itemLabel="one" itemValue="1"/>
+                                       <f:selectItem itemLabel="two" itemValue="2"/>
+                                       <f:selectItem itemLabel="three" itemValue="3"/>
+                                       
+                                   </p:selectCheckboxMenu>
+                                      <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:commandLink update="disp" value="Submit"/>
+                                   <p:outputPanel id="disp" style="width: 405px;padding-left: 5px;margin-top: 10px">
+                                       <p:dataList var="lst" emptyMessage="Nothing is selected">                                           
+                                       </p:dataList>                                       
+                                   </p:outputPanel>
+                                        
+                                </p:column>
+                                <p:column id="col_dev_3" style="text-align: left">
+                                    <h:outputLabel for="No" value="Roles Not Required" style="text-align: left"/>
+                                    <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:selectCheckboxMenu id="N_col_dev_3" label="one" filter="true" filterMatchMode="startsWith" panelStyle="250px" >
+                                       <f:selectItem itemLabel="one" itemValue="1"/>
+                                       <f:selectItem itemLabel="two" itemValue="2"/>
+                                       <f:selectItem itemLabel="three" itemValue="3"/>                                       
+                                   </p:selectCheckboxMenu>
+                                    <h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+                                   <p:commandLink update="disp_1" value="Submit"/>
+                                   <p:outputPanel id="disp_1" style="width: 350px;padding-left: 5px;margin-top: 10px">
+                                       <p:dataList var="lst" emptyMessage="Nothing is selected">                                           
+                                       </p:dataList>                                       
+                                   </p:outputPanel>
+                                         
+                                        
+                                </p:column>
+                            </h:panelGrid>
+                            </p:row>
+                        
+                            
+                             
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="4" style="margin-top: 20px" >
+                            <f:facet name="header">
+                                <h:outputText value="Apps Required " style="text-align: center"/>
+                            </f:facet>
+                             <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="app_email" value="Lotus Notes"/>
+                            <p:selectOneRadio id="app_email">
+                                <f:selectItem itemLabel="Grant" />
+                                <f:selectItem itemLabel="Revoke" />
+                            </p:selectOneRadio>
+                            
+                        </h:panelGrid>   
+                        
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="app_lotus" value="Email Access"/>
+                            <p:selectOneRadio id="app_lotus">
+                                <f:selectItem itemLabel="Grant" />
+                                <f:selectItem itemLabel="Revoke" />
+                            </p:selectOneRadio>
+                            
+                        </h:panelGrid>   
+                            
+                             <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="app_intaccess" value="Internet Access"/>
+                            <p:selectOneRadio id="app_intaccess">
+                                <f:selectItem itemLabel="Grant" />
+                                <f:selectItem itemLabel="Revoke" />
+                            </p:selectOneRadio>
+                            
+                        </h:panelGrid>   
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="1" style="margin-top: 10px">
+                           <f:facet name="header">  
+                             Required For 
+                         </f:facet>  
+                         <p:inputTextarea id="reqdesc" rows="5" cols="50" required="true" maxlength="60" style="width: 900px" value=""/>
+                      </p:panelGrid>
+                       
+                       <p:panelGrid columns="1" style="margin-top: 10px">
+                           <f:facet name="header">  
+                             Other Requirement
+                         </f:facet>  
+                         <p:inputTextarea id="reqdesc" rows="5" cols="50" required="true" maxlength="60" style="width: 900px" value=""/>
+                      </p:panelGrid>
+                        
+                        
+                        
+                         </p:panel>
+             
+                
+                    
+                </h:form>
+               
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+    
+            
+</html>

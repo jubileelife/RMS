@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+
+            <ui:define name="left">
+                <ui:include src="menu.xhtml"/>
+            </ui:define>
+ 
+            <ui:define name="content">
+
+                <h:form id="reqAssign">
+ 
+
+                    <p:panel header="Assignment Screen  "> 
+                        <p:panelGrid columns="8" style="margin-top:10px;width: 855px;">
+                            <f:facet name="header">  
+                                Request Details 
+                            </f:facet>  
+
+                            <p:outputLabel id="no8" value="Request No"></p:outputLabel>
+                            <p:inputText id="requestno" value="#{req_Assignment.assignmentScreenReqId}" readonly="true"/>
+
+                            <p:outputLabel id="rqdate8" value="Request Date"></p:outputLabel>
+                            <p:inputText id="reqdate8" value="#{req_Assignment.assignmentScreenReqDate}" readonly="true"></p:inputText>
+
+                            <p:outputLabel id="Requeststatus8" value="Status"></p:outputLabel>
+                            <p:inputText id="reqstatus8" value="New" readonly="true"/>
+
+
+                            <p:outputLabel id="rtype8" value="Type"></p:outputLabel>
+                            <p:inputText id="reqttype8" value="#{req_Assignment.assignmentScreenReqType}" readonly="true"/>
+                            <p:outputLabel id="sys8" value="System"></p:outputLabel>
+
+                            <p:inputText id="systemmodule8" value="#{req_Assignment.assignmentScreenReqSystem}" readonly="true"/>
+
+                            <p:outputLabel id="sysmod8" value="System Module"></p:outputLabel>
+
+                            <p:inputText id="systemcomp8" value="#{req_Assignment.assignmentScreenReqSystemMod}" readonly="true"/>
+
+                            <p:outputLabel id="App_date8" value="Requester"></p:outputLabel>
+
+                            <p:inputText id="txt_app_date8" value="#{req_Assignment.assignmentScreenRequester}" readonly="true"/>
+
+
+                            <p:outputLabel id="req_pryarty8" value="Request Priority"></p:outputLabel>
+
+                            <p:inputText id="txt_exp_del_date28" value="#{req_Assignment.assignmentScreenReqPriority}" readonly="true"/>
+
+                            <p:outputLabel id="req_pryarty348" value="Approved Date"></p:outputLabel>
+
+                            <p:inputText id="txt_exp_del_date4428" value="#{req_Assignment.assignmentScreenReqApproveDate}" readonly="true"/>
+
+                            <p:outputLabel id="req_pryarty48" value="Approved By"></p:outputLabel>
+
+                            <p:inputText id="txt_exp_del_date428" value="#{req_Assignment.assignmentScreenApproveBy}" readonly="true"/>
+
+
+                            <p:outputLabel  value="Request Completion Date"></p:outputLabel>
+                            <p:calendar  pattern="dd-MMM-yyyy HH:mm:ss a" value="#{req_Assignment.assignmentCompletionDate}" disabled="#{req_Assignment.readCheck}" id="completiondate"> 
+                                <h:outputText style="font-weight: bold;" value="&nbsp;&nbsp;&nbsp;#{req_Assignment.assignmentreqtargetdate}" />
+                            </p:calendar>
+                            
+                            
+                        </p:panelGrid>
+
+                        <!--                            <p:outputLabel id="exp_date8" value="Expected Delivery Date"></p:outputLabel>
+
+                            <p:inputText id="txt_EXP_date8" value="#{req_Assignment.assignmentScreenReqExpectedDate}" readonly="true"/>-->
+
+                        
+                        <p:confirmDialog styleClass="overlayDialog" message="Request Assigned." widgetVar="myDialogAsigned" header="Request Assigned." severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="false" value="OK" action="#{req_Assignment.redirectUrlAssigned('')}"  />
+                        </p:confirmDialog>
+
+
+                          <p:confirmDialog styleClass="overlayDialog" message="Request Completion Date Updated." widgetVar="myDialogDateAsigned" header="Request Completion Date Updated." severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton ajax="false" value="OK" oncomplete="myDialogDateAsigned.hide()"  />
+                        </p:confirmDialog>
+
+
+                        <br></br>
+                        <p:panelGrid columns="1" >
+                            <f:facet name="header">  
+                                Request Title
+                            </f:facet>  
+                            <p:inputText id="reqtit8" value="#{req_Assignment.assignmentScreenReqTitle}" style="width: 830px" readonly="true"/>
+                        </p:panelGrid> 
+                        <br></br>
+
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">  
+                                Requester Description  
+                            </f:facet>    
+                            <p:inputTextarea id="reqdesc8" rows="10" cols="50" style="width: 400px;" readonly="true" maxlength="600" value="#{req_Assignment.assignmentScreenReqDesc}"/> 
+
+                            <f:facet name="header">  
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                Approval Comments  
+                            </f:facet>    
+
+                            <p:inputTextarea id="appcomm8" rows="10" cols="50" required="false" readonly="true" maxlength="600" style="width:400px"  requiredMessage="Approval/Decline Comments Require." value="#{req_Assignment.assignmentScreenReqApprovDesc}"/>
+
+                        </p:panelGrid> 
+
+                        <p:panelGrid columns="1" style="margin-top:20px">
+                            <f:facet name="header">  
+                                Request Attachments  
+                            </f:facet>  
+
+                            <p:commandLink actionListener="#{req_Assignment.preDownload}" value="View Requester Attachment" style="#{req_Assignment.dlCheck}" ajax="false"  >
+                                <p:fileDownload value="#{req_Assignment.download}" />
+                            </p:commandLink>
+                            
+                            <p:commandLink  actionListener="#{req_Assignment.preDownloadApprove}" value="View Approver Attachment"  style="#{req_Assignment.dlCheckAprove}" ajax="false"  >
+                                <p:fileDownload value="#{req_Assignment.downloadApprov}" />
+                            </p:commandLink>
+                            
+                            <p:growl  showDetail="true" />
+                        </p:panelGrid>
+
+
+                        <br></br>
+                        <p:panelGrid columns="6">
+                            <f:facet name="header">  
+                                Assignment Detail  
+                            </f:facet>  
+
+                            <p:outputLabel value="Assignment Category"></p:outputLabel>
+                            <p:selectOneMenu value="#{req_Assignment.assignmentCategory}" >
+                                <f:selectItem itemLabel="Select Category" itemValue="" />
+                                <f:selectItem itemLabel="Analysis" itemValue="Analysis" />
+                                <f:selectItem itemLabel="Planning" itemValue="Planning" />   
+                                <f:selectItem itemLabel="Development" itemValue="Development" /> 
+
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Assigned To"></p:outputLabel>
+                            
+                            <p:selectOneMenu value="#{req_Assignment.assignmentAssignTo}" valueChangeListener="#{req_Assignment.reqAssignChangeEvent}" >
+                                <f:selectItems value="#{req_Assignment.reqAssignSelect}" var="reqAssign" itemLabel="#{reqAssign.ddString}"  itemValue="#{reqAssign.ddValues}"  />              
+                            </p:selectOneMenu>
+                           
+                            <p:outputLabel  value="Assignment Target Date"></p:outputLabel>
+                            <p:calendar  pattern="dd-mm-yyyy hh:mm:ss a" maxdate="#{req_Assignment.assignmentreqtargetdate}" value="#{req_Assignment.assignmentTargetDate}" id="enddate"> 
+                            </p:calendar>
+
+                            <p:outputLabel value="Comments"></p:outputLabel>
+                            <p:inputText  value="#{req_Assignment.assignmentComments}" />
+
+                            
+                        </p:panelGrid>
+                        <br></br>
+                         <p:outputLabel style="text-align: center;color: red;" value="#{req_Assignment.errorMesg}" />
+
+                        <h:panelGrid columns="3">
+                            <p:commandButton  value="View Recent Assignments" action="#{req_Assignment.redirectUrlVaiAssignment()}" update="@form"/>&nbsp;&nbsp;
+                            <p:commandButton  value="Assign Request" action="#{req_Assignment.onClickRequestAssign()}" update="@form"/>                 
+                        </h:panelGrid>
+
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

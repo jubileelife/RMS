@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+    <h:body>
+
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml" >
+
+            <ui:define name="left">
+            </ui:define>
+
+            <ui:define name="content" >
+
+                <h:form id="reqform">
+
+                    <p:panel id="createreqPanel" header="Request Initiation Screen">
+                        <p:panelGrid columns="8" style="margin-top:20px">
+                            <f:facet name="header">  
+                                System Generated  
+                            </f:facet>  
+
+                            <p:outputLabel id="no" value="Request No"></p:outputLabel>
+                            <p:inputText id="requestno" value="System Generated" readonly="true"/>
+
+                            <p:outputLabel id="date" value="Date"></p:outputLabel>
+                            <p:inputText id="reqdate" value="#{currentDate}"  readonly="true">
+                                <f:convertDateTime pattern="dd-MMM-yyyy h:mm:ss a" type="date" />
+                            </p:inputText>
+
+                            <p:outputLabel id="Requeststatus" value="Status"></p:outputLabel>
+                            <p:inputText id="reqstatus" value="New" readonly="true"/>
+
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="6" style="margin-top:20px">
+                            <f:facet name="header">  
+                                System Component  
+                            </f:facet>  
+                            <p:outputLabel id="rtype" value="Request Type"  ></p:outputLabel>
+                            <p:selectOneMenu value="#{req_init.reqTypeSelectValues}" required="true" requiredMessage="Please Select Request Type" valueChangeListener="#{req_init.reqTypeChangeEvent}" >
+                                <f:selectItems value="#{req_init.reqTypeValues}" var="reqType" itemLabel="#{reqType.ddString}"  itemValue="#{reqType.ddValues}"  />              
+                            </p:selectOneMenu>
+
+                            <p:outputLabel id="sys" value="System"></p:outputLabel>
+
+                            <p:selectOneMenu value="#{req_init.reqSystemSelectValues}" required="true" requiredMessage="Please Select Request Type" valueChangeListener="#{req_init.reqSystemChangeEvent}" >
+                                <f:selectItems value="#{req_init.reqSystemValues}" var="reqSystem"  itemLabel="#{reqSystem.ddString}"  itemValue="#{reqSystem.ddValues}"  />              
+                                    <f:ajax event="valueChange" execute="@this" render="sysModule"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel id="sysmod" value="System Module"></p:outputLabel>
+
+                            <p:selectOneMenu id="sysModule" filter="true" value="#{req_init.reqSystemModuleSelectValues}" editable="#{req_init.selectEditable}" required="true" requiredMessage="Please Select Request Type" valueChangeListener="#{req_init.reqSystemModuleChangeEvent}" >
+                                <f:selectItems value="#{req_init.reqSystemModuleValues}" var="reqSystemModule" itemLabel="#{reqSystemModule.ddString}"  itemValue="#{reqSystemModule.ddValues}"  />              
+                            </p:selectOneMenu>
+
+                            <p:outputLabel id="req_priorty" value="Set Priority"></p:outputLabel>
+
+                            <p:selectOneMenu value="#{req_init.reqPriority}" required="true">
+                                <f:selectItem itemLabel="Low" itemValue="Low" />
+                                <f:selectItem itemLabel="Medium" itemValue="Medium" />
+                                <f:selectItem itemLabel="High" itemValue="High" />
+                            </p:selectOneMenu>
+
+                        </p:panelGrid>
+                        <br></br>
+
+                        <p:panelGrid columns="1">
+                            <f:facet name="header">  
+                                Request Title   
+                            </f:facet>  
+                            <p:inputText id="reqtitle" required="true" value="#{req_init.reqTitle}" style="width: 900px"/>
+                        </p:panelGrid>
+
+                        <br></br>
+                        <p:panelGrid columns="1">
+                            <f:facet name="header">  
+                                Request Description  
+                            </f:facet>  
+                            <p:inputTextarea id="reqdesc" rows="10" cols="50" required="true" maxlength="600" style="width: 900px" value="#{req_init.reqDescription}"/>
+                        </p:panelGrid>
+
+                        <p:confirmDialog styleClass="overlayDialog" message="Request Submitted, Your id is #{req_init.newRequestId}." widgetVar="myDialogVar" header="Request Submitted" severity="alert" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:commandButton  value="OK" action="#{req_init.redirectUrl()}"  />
+                        </p:confirmDialog>
+
+
+                        <p:panelGrid columns="1" style="margin-top:20px">
+                            <f:facet name="header">  
+                                File Uploading  
+                            </f:facet>  
+
+                            <p:fileUpload id="reqFile" fileUploadListener="#{req_init.upload}"  mode="advanced" dragDropSupport="false"
+                                          update="messages" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png|txt)$/" />
+                        </p:panelGrid>
+
+                        <h:panelGrid columns="3">
+                            <br/>
+                            <p:growl id="messages" showDetail="true" />
+                            <p:outputLabel value="" />
+                            <p:commandButton ajax="true" value="Submit Request" action="#{req_init.creatRequest()}"  update="@form" >
+                            
+                            </p:commandButton>                 
+                        </h:panelGrid>
+                    </p:panel>
+
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+
+    </h:body>
+
+</html>
+

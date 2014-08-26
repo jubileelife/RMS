@@ -1,0 +1,35 @@
+/* CSS Document */
+
+.entry #dl_accordion h3 { border:none; border-bottom:1px dotted #ccc; margin-bottom:0; }
+
+.entry #dl_accordion h3 a { color:#666; font-size:12px; padding-top: 9px; padding-bottom: 8px; }
+
+.entry #dl_accordion h4 { font-size:12px; font-family:Verdana, Geneva, sans-serif; font-weight:bold;}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, .ui-widget-content .ui-state-focus, .ui-state-focus { background-color:#fafafa !important;  }
+
+.ui-accordion .ui-accordion-content { border:none;}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background-color:#fff !important;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-widget-header .ui-state-focus {
+	background-color:#f8f8f8 !important;
+}
+
+.ui-accordion .ui-accordion-content { margin:10px 0 0;}
+
+.ui-accordion .ui-accordion-header .ui-icon { left:5px;}
+
+.ui-icon-triangle-1-s {background-position:0% 100% !important;}
+
+.ui-icon-triangle-1-e {background-position:0% 0%;}
+
+.ui-state-default .ui-icon, .ui-state-active .ui-icon {
+	background-image: url(../images/ico/ec.png);
+}
+
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon { background-position:0% 50%; }
+
+.entry #dl_accordion h3 a:hover, .ui-state-focus a { color:#fff !important;}

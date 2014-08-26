@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="left">
+                <ui:include src="menu.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                <h:form>
+                    
+                    <p:panel header="Assignment Screen Request# 100 Approve By: Dr.Adnan Qadir  Approve Date: 17-04-2014">
+                    
+                    <p:panelGrid columns="6" style="margin-top:20px; width: 790px" >
+                         <f:facet name="header">  
+                             System Component  
+                         </f:facet>  
+                         <p:outputLabel id="rtype" value="Type"></p:outputLabel>
+                         <p:inputText id="reqttype" value="Modification" readonly="true"/>
+                         <p:outputLabel id="sys" value="System"></p:outputLabel>
+
+                         <p:inputText id="systemmodule" value="CLAS" readonly="true"/>
+
+                         <p:outputLabel id="sysmod" value="System Module"></p:outputLabel>
+
+                         <p:inputText id="systemcomp" value="Auto Underwriting" readonly="true"/>
+                     </p:panelGrid>
+                      <br></br>
+                     
+                      <p:panelGrid columns="1" style="width: 790px" >
+                           <f:facet name="header" >  
+                             Title and Description  
+                         </f:facet>  
+                           <p:inputText id="reqtit" value="Changing in TSAR" style="width: 100px" readonly="true"/>
+                         
+                      </p:panelGrid> 
+                     
+                      <br></br>
+                      
+                      <p:tabView id="tabView" dynamic="true" cache="true" style="width: 790px" >
+                            <p:tab id="tba1" title="Request">
+                                <p:panelGrid columns="1" style="width: 660px">
+                           <f:facet name="header">  
+                             Request Description  
+                         </f:facet>    
+                         <p:inputTextarea id="reqdesc" rows="10" cols="50" style="width: 660px" readonly="true" maxlength="60" value="Approve by and Approve date displays on top of the panel."/> 
+                     </p:panelGrid> 
+                            </p:tab>
+                           
+                           <p:tab id="tab2" title="Approval Remarks">
+                               <p:panelGrid columns="1">
+                                   <f:facet name="header">  
+                                       Comments  
+                                   </f:facet>    
+                                  
+                                   <p:inputTextarea id="appcomm" rows="10" cols="50" required="true" maxlength="60" style="width: 660px" value="Approved, IT please Go Ahead. File also attaching"/>
+                               </p:panelGrid>
+                           </p:tab>
+                       </p:tabView>
+                      
+                      <br></br>
+                     <p:panelGrid columns="8">
+                           <f:facet name="header">  
+                             Assignment Detail  
+                         </f:facet>  
+                         
+                            <p:outputLabel id="cat" value="Task"></p:outputLabel>
+                         <p:selectOneMenu value="Category" required="true">
+                             <f:selectItem itemLabel="Select Category" itemValue="" />
+                             <f:selectItem itemLabel="Analysis" itemValue="A" />
+                             <f:selectItem itemLabel="Planning" itemValue="D" />   
+                              <f:selectItem itemLabel="Development" itemValue="D" /> 
+                             
+                         </p:selectOneMenu>
+                            
+                         <p:outputLabel id="assto" value="Assigned To"></p:outputLabel>
+                        
+                         <p:selectOneMenu value="assign to" required="true">
+                             <f:selectItem itemLabel="Select IT Person" itemValue="" />
+                             <f:selectItem itemLabel="Nadeem" itemValue="N" />
+                             <f:selectItem itemLabel="Osama" itemValue="N" />
+                             <f:selectItem itemLabel="Khurram" itemValue="N" />
+                             <f:selectItem itemLabel="Javvad" itemValue="J" />
+                             <f:selectItem itemLabel="Mazhar" itemValue="M" />              
+                             <f:selectItem itemLabel="Burhan" itemValue="B" />              
+                         </p:selectOneMenu>
+                 
+                         <p:outputLabel id="edate" value="Target Date"></p:outputLabel>
+                         <p:calendar  pattern="dd-MM-yyyy" id="enddate"> 
+                         </p:calendar>
+                         
+                         <p:outputLabel id="cdate" value="Project Completion Date"></p:outputLabel>
+                         <p:calendar  pattern="dd-MM-yyyy" id="completiondate"> 
+                         </p:calendar>
+                         
+                     </p:panelGrid>
+                      <br></br>
+                      <h:panelGrid columns="3">
+                  
+                    <p:commandButton id="insert" value="Assign Request" update="@form"/>                 
+                </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

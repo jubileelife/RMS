@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+        <title>Request Initiation Detail</title>
+       
+         
+    </h:head>
+  
+
+    <h:body >
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="title">
+                <h:outputText value="Request Initiation Detail"></h:outputText>
+            </ui:define>
+            <ui:define name="left">
+
+            </ui:define>
+            <ui:define name="content">
+                <h:form id="reqdet">
+                    
+                    <p:remoteCommand name="AutoRunMethod" action="#{Req_Approval.redirectRequestApproval()}" update="approvalTable" autoRun="true" />
+                    
+                    <p:panel header="Approval Listing Screen" style="height: 500px;">
+
+                        <p:dataTable   styleClass="textStyle" rows="10" paginator="false" id="approvalTable" filteredValue="#{Req_Approval.filtered}" value="#{Req_Approval.tableData}" var="eachItem" emptyMessage="No Record Found.">
+
+                            <p:column filterStyle="width: 30px;" sortBy="#{eachItem.reqId}" filterBy="#{eachItem.reqId}"
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="RequestID"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItem.reqId}"/>
+                            </p:column>
+
+                            <p:column  sortBy="#{eachItem.reqDate}">
+                                <f:facet name="header">
+                                    <h:outputText value="Request Date"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItem.reqDate}"/>
+                            </p:column>
+
+                            <p:column  sortBy="#{eachItem.reqTitle}">
+                                <f:facet name="header">
+                                    <h:outputText value="Request Title"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItem.reqTitle}"/>
+                            </p:column>
+
+                            <p:column  sortBy="#{eachItem.reqType}">
+                                <f:facet name="header">
+                                    <h:outputText value="Request Type"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItem.reqType}"/>
+                            </p:column>
+
+                            <p:column  sortBy="#{eachItem.requesterName}">
+                                <f:facet name="header">
+                                    <h:outputText value="Requester Name"/>
+                                </f:facet>
+                                <h:outputText value="#{eachItem.requesterName}"/>
+                            </p:column>
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Action"/>
+                                </f:facet>
+                                <p:commandButton id="cd" value="Approve/Reject" update="@form" action="#{Req_Approval.onClickEvent()}" >
+                                    <f:setPropertyActionListener target="#{Req_Approval.clickedItem}" value="#{eachItem}"/>
+                                </p:commandButton>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:panel>                    
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

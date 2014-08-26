@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head> 
+        <title>Requirement Management System</title>
+
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        </f:facet>
+        <link rel="shortcut icon" href="#{request.contextPath}/resources/asset/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="#{request.contextPath}/resources/asset/favicon.ico" type="image/x-icon" />       <h:outputScript name="../asset/cforms.js" />
+        <h:outputScript name="../asset/jquery.js" />
+        <h:outputScript name="../asset/script.js" />
+        <h:outputScript name="../asset/modernizr-2.0.6.min.js" />
+        <h:outputScript name="../asset/mootools-core-1.4-full.js" />
+
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/helpers.css?" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/style1.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/960.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/style2.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/userstyles.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/othermedia.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/dl.css?ver=3.3.2&amp;ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/jquery.jqplot.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/calc-css.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/minimal.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/StyleGeneral.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/asset/calc-css.css?ln=css&amp;version=#{language.myTimeinMill}" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/css/Overridecss.css?ln=css&amp;version=#{language.myTimeinMill}" />
+
+
+
+        <h:outputStylesheet name="../css/default.css"/>
+        <h:outputStylesheet name="../css/cssLayout.css"/>
+
+        <style>
+            div.head { 
+                /*background:url("#{request.contextPath}/resources/asset/mainlarge5.jpg") no-repeat 0 64px;
+                min-height: 350px; */
+                position: relative; margin:0 0 40px 0;
+            }
+        </style>
+
+        <style type="text/css">
+            input.validation-failed, select.validation-failed, textarea.validation-failed  {
+                border: 1px solid red;
+                /*color: red;
+                background-color: hsl(60, 100%, 92%);*/
+
+                color: red;
+            }
+            div.validation-advice{ /*float: left!important;*/ color: red!important; padding-left: .5em!important; }
+            p { clear: both; } 
+            .submit { margin-left: 12em; }
+            em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+            .clear  {clear:all}
+            .head h1.pagetitle {
+                font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif;
+                font-size: 19px;
+                font-weight: normal;
+                text-transform: uppercase;
+                color: #fff;
+                background-color: #ba0c2f;
+                padding: 13px;
+                float: right;
+                margin: 0 0 16PX 0;  ;
+                /*position: absolute;*/
+                /*right: 0;
+                bottom: -30px;*/
+            }
+        </style>
+
+        <style>
+
+            #nav-menu ul
+            {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            #nav-menu li
+            {
+                float: left;
+                margin: 0 0.15em;
+            }
+
+            #nav-menu li a
+            {
+                background-color: #fff ;
+                height: 2em;
+                line-height: 2em;
+                float: left;
+                width: 12em;
+                display: block; 
+                border: 0.1em solid #dcdce9;
+                color: #0d2474;
+
+                text-align: center;
+            }
+
+            /* Hide from IE5-Mac \*/
+            #nav-menu li a
+            {
+                float: none
+            }
+            /* End hide */
+
+            #nav-menu
+            {
+                width:960px;margin: 0 auto;
+            }
+
+
+        </style>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                $(document)[0].oncontextmenu = function() {
+                    return false;
+                }
+
+                $(document).mousedown(function(e) {
+                    if (e.button == 2) {
+                        //alert('Sorry, this functionality is disabled!');
+                        return false;
+                    } else {
+                        return true;
+                    }
+
+                });
+
+
+            });
+
+        </script>
+
+
+
+    </h:head>
+    <body>
+        <div id="container" class="c_12">
+
+            <div class="head" >
+
+
+                <div class="logo">
+                    <h2 class="inside"><a href="javascript:;" class="ir">Jubilee Life Insurance</a></h2>
+                </div>
+                <div class="navs">
+                    <nav class="primary clearfix">     
+                        <ul id="menu-primary" class="menu">
+
+                            <li id="menu-item-127" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-127">
+                                <h:outputLabel style="#{user.logoutValue}margin-top: 3px;" value="#{custom_session.sessionName} &nbsp;&nbsp;&nbsp;" />
+                            </li>
+
+                            <li id="menu-item-127" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-127">
+                                <h:graphicImage width="23px" style="#{user.logoutValue}margin-top: -1px;" url="/resources/asset/logout.png" />
+                            </li>
+                            <li id="menu-item-127" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-127">
+                                <h:form > 
+
+                                    <p:dialog styleClass="overlayDialog" modal="true" widgetVar="statusDialogG" draggable="false"  closable="false" resizable="false">
+                                        <p:graphicImage url="/resources/asset/loading.gif" />
+                                    </p:dialog>
+
+
+                                    <h:commandLink style="#{user.logoutValue}"  action="#{user.logout()}" value="LOGOUT"></h:commandLink></h:form>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="clear"  ></div>
+
+                <h1 class="pagetitle" >Requirement Management System</h1>
+
+            </div>
+
+            <div id="main" role="main" class="clearfix">
+
+
+
+
+                <div class="content-wrap clearfix">
+
+
+
+                    <!--/ #content -->
+                </div>
+
+            </div>
+
+        </div>        
+
+
+    </body>
+
+</html>

@@ -1,0 +1,174 @@
+﻿
+BODY {
+	MARGIN: 0px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+.h1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #006db0; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.h2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #506f85; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+TH {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #515151; border:none; text-align:center;
+}
+TD {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #515151; border:none;
+}
+
+.textBold {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #333333; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.textHighlight {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #006db0; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+#leftNav A {
+	text-align: left
+}
+#leftNav A:hover {
+	text-align: left
+}
+#leftNavSub A {
+	text-align: left
+}
+#leftNavSub A:hover {
+	text-align: left
+}
+#leftNavHeading A {
+	text-align: left
+}
+
+A:link {
+	text-align :left
+}
+A:visited {
+	text-align: left
+}
+A:active {
+	text-align: left
+}
+A:hover {
+	text-align: left
+}
+.copyright {
+	FONT-SIZE: 9px; COLOR: #666666; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.multibox {
+	BORDER-RIGHT: #b6c5d1 1px solid;
+	PADDING-RIGHT: 0px;
+	BORDER-TOP: #b6c5d1 1px solid; 
+	FONT-WEIGHT: normal; 
+	FONT-SIZE: 11px; 
+	MARGIN: 0px; 
+	BORDER-LEFT: #b6c5d1 1px solid; 
+	WIDTH: 190px; 
+	COLOR: #454545; 
+	TEXT-INDENT: 4pt; 
+	BORDER-BOTTOM: #b6c5d1 1px solid; 
+	FONT-FAMILY: Tahoma; 
+	/*WHITE-SPACE: normal; */
+	HEIGHT: 100px
+}
+.Agentbg {
+	FONT-WEIGHT: normal; FONT-SIZE: 8pt; COLOR: #000071; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #d8e0e7
+}
+.subHeading {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #000000; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.hd_text_blue {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; FONT-SIZE: 13px; BORDER-LEFT: #ffffff 1px solid; COLOR: White; BORDER-BOTTOM: #ffffff 1px solid; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #00629F; text-align: center; 
+}
+.label {
+	FONT-SIZE: 1em; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif; HEIGHT: 2px; color: #666; font-weight: 500;
+}
+
+.textbox { overflow:hidden;
+	BORDER-RIGHT: #666 1px solid; BORDER-TOP: #666 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 11px; MARGIN: 3px; BORDER-LEFT: #666 1px solid; WIDTH: 190px; COLOR: #666; TEXT-INDENT: 4pt; BORDER-BOTTOM: #666 1px solid; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif; WHITE-SPACE: normal; HEIGHT: 18px;
+
+	}
+
+
+.combobox {
+	BORDER-RIGHT: #666 1px solid; BORDER-TOP: #666 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 11px; MARGIN: 0px; BORDER-LEFT: #666 1px solid; WIDTH: 190px; COLOR: #666; TEXT-INDENT: 4pt; BORDER-BOTTOM: #666 1px solid; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif; WHITE-SPACE: normal; HEIGHT: 18px;
+}
+
+.button 
+{ 
+	 background-color:#BA0C2F;
+	 /*background-image: url(../../images/button_bg.png); */
+	 border-color:#5E9ED2;
+	 font-weight: 400;
+	 border: 1px;
+	 color: #ffffff;
+	 height:20px;
+	 width:100px;
+	 
+}
+.cbutton 
+{ 
+	 background-color:#BA0C2F;
+	/* background-image: url(../../images/button_bg.png); */
+	 border-color:#5E9ED2;
+	 font-weight: 400;
+	 border: 1px;
+	 color: #ffffff;
+	 width:20px;
+	 
+}
+.errorlabel {
+	FONT-SIZE: 12px; font-family: "FuturaBook", "Trebuchet MS", Arial, Helvetica, sans-serif; HEIGHT: 2px; color: #85253E; font-weight: bold;
+}
+.item 
+{
+	text-align :left;
+}
+
+.table
+{
+	text-align:  left;
+	border:1px;
+	border-color:none;
+}
+.hiddencol
+    {
+        display:none;
+    }
+.showcol
+{
+    display:block;
+    }
+
+#divGrid
+span 
+{
+	color:White; font-weight:900
+}
+.textInputField {
+	BORDER-RIGHT: #8297c4 1px solid; BORDER-TOP: #8297c4 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #8297c4 1px solid; COLOR: #000000; BORDER-BOTTOM: #8297c4 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+.footer
+{
+	font-family:Arial ;
+	font-size :9px; 
+	color:Navy; 
+	 
+	
+	}
+
+.text_link {
+	text-decoration:none !important;
+	color:#ba0c2f !important;
+}
+
+.text_link:hover{
+	text-decoration:underline !important;
+}
+.ajax-loading {
+	padding: 20px 0;
+	background: url(/images/spinner.gif) no-repeat center;
+}	

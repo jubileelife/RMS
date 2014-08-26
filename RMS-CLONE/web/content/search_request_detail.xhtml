@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="title">
+                <h:outputText value="Request Search"></h:outputText>
+            </ui:define>
+            <ui:define name="left">
+ 
+            </ui:define>
+            <ui:define name="content">
+                <h:form id="reqDetails">
+                    <p:panel header="Search Results" >
+                        <p:dataTable  styleClass="textStyle" rows="10" paginator="false" id="reqDetailTable" filteredValue="#{request_details.filtered}" value="#{request_details.reqDetailTableData}"  var="eachItemreqDet" emptyMessage="No Record Found.">
+                            <p:column  sortBy="#{eachItemreqDet.serialNo}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Serial No"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemreqDet.serialNo}"/>
+                            </p:column>
+
+                            <p:column filterStyle="width: 30px;" filterBy="#{eachItemreqDet.reqId}" sortBy="#{eachItemreqDet.reqId}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Request ID"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemreqDet.reqId}"/>
+                            </p:column>
+
+                            <p:column sortBy="#{eachItemreqDet.reqDate}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Date"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemreqDet.reqDate}"/>
+                            </p:column>
+
+                            <p:column sortBy="#{eachItemreqDet.reqStatus}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Status"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemreqDet.reqStatus}"/>
+                            </p:column>
+
+                            <p:column sortBy="#{eachItemreqDet.showAttachMesg}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="User"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemreqDet.showAttachMesg}"/>
+                            </p:column>
+
+                            <p:column sortBy="#{eachItemreqDet.reqRemarks}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Description"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemreqDet.reqRemarks}"/>
+                            </p:column>
+
+                            <p:column sortBy="#{eachItemreqDet.updateUser}" 
+                                      filterMatchMode="startsWith">
+                                <f:facet name="header">
+                                    <h:outputText value="Approved By"/>
+                                </f:facet>
+                                <h:outputText  value="#{eachItemreqDet.updateUser}"/>
+
+                            </p:column>
+
+                            <p:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Action"/>
+                                </f:facet>
+
+                                
+                                <p:commandButton value="Details" icon="ui-icon-extlink" action="#{req_Assignment.onClickDetailForUser(eachItemreqDet.reqId)}">
+                                </p:commandButton>
+
+                            </p:column>
+
+                        </p:dataTable>    
+                    </p:panel>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

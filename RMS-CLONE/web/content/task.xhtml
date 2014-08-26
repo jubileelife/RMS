@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:body>
+        <ui:composition template="/WEB-INF/template/maintemplate.xhtml">
+            <ui:define name="left">
+                    <ui:include src="menu.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="content">
+                <h:form>
+                    <p:panel header="Task Assignment Screen">
+                    <p:panelGrid columns="8" style="margin-top:20px">
+                     <f:facet name="header">  
+                        Auto Populated IDs
+                    </f:facet>  
+
+                    <p:outputLabel id="no" value="Request No"></p:outputLabel>
+                    <p:inputText id="requestno" value="100" readonly="true"/>
+
+                    <p:outputLabel id="assgnid" value="Assignment ID"></p:outputLabel>
+                    <p:inputText id="assignmentid" value="1000" readonly="true"></p:inputText>
+
+                    <p:outputLabel id="tid" value="Task ID"></p:outputLabel>
+                    <p:inputText id="tskid" value="100000" readonly="true"/>
+                     </p:panelGrid>
+                    
+                    <p:panelGrid columns="8" style="margin-top:20px">
+                         <f:facet name="header">  
+                             Task Detail
+                         </f:facet>  
+                        
+                         <p:outputLabel id="tt" value="Task Title"></p:outputLabel>
+                         <p:inputText id="ttid" value="Analysis" required="true"/>
+                        
+                         <p:outputLabel id="tcat" value="Task Category"></p:outputLabel>
+                         <p:selectOneMenu value="Task Category" required="true">
+                             <f:selectItem itemLabel="Select Task Category" itemValue="" />
+                             <f:selectItem itemLabel="Requirement Gathering" itemValue="A" />
+                             <f:selectItem itemLabel="Meeting" itemValue="D" />
+                             <f:selectItem itemLabel="UML designing" itemValue="U" />
+                             <f:selectItem itemLabel="ERD designing" itemValue="E" />
+                             <f:selectItem itemLabel="Scripting" itemValue="S" />
+                             <f:selectItem itemLabel="Forms" itemValue="F" />
+                             <f:selectItem itemLabel="Reports" itemValue="R" />       
+                         </p:selectOneMenu>
+                         <p:outputLabel id="sys" value="System"></p:outputLabel>
+
+                         <p:inputText id="systemmodule" value="CLAS" readonly="true"/>
+
+                         <p:outputLabel id="sysmod" value="System Module"></p:outputLabel>
+
+                         <p:inputText id="systemcomp" value="Auto Underwriting" readonly="true"/>
+                         
+                     </p:panelGrid>
+                    
+                     <p:panelGrid columns="3" style="margin-top:20px">
+                         <f:facet name="header">  
+                             Task Description
+                         </f:facet>  
+                         <p:inputTextarea id="tskdesc" value="Working on auto report" required="true"/>
+                         
+                           <p:outputLabel id="tc" value="Task Comments"></p:outputLabel>
+                         <p:inputTextarea id="tcdetail" value="Comments on the task" required="true"/>
+                          
+                         
+                     </p:panelGrid>
+                    
+                     <p:panelGrid columns="9" style="margin-top:20px">
+                         <f:facet name="header">  
+                             Task Category Assignment
+                         </f:facet>
+                          <p:selectOneMenu value="assign to" required="true">
+                             <f:selectItem itemLabel="Select IT Person" itemValue="" />
+                             <f:selectItem itemLabel="Nadeem" itemValue="N" />
+                             <f:selectItem itemLabel="Javvad" itemValue="J" />
+                             <f:selectItem itemLabel="Mazhar" itemValue="M" />              
+                             <f:selectItem itemLabel="Burhan" itemValue="B" />              
+                         </p:selectOneMenu>
+                         
+                         <p:outputLabel id="assgdate" value="Assigned Date"></p:outputLabel>
+                         <p:inputText id="assigndate" value="System Date" required="true"/>
+                         
+                          <p:outputLabel id="sdate" value="Start Date"></p:outputLabel>
+                         <p:calendar  pattern="dd-MM-yyyy" id="startdate"> 
+                         </p:calendar>
+                         
+                         <p:outputLabel id="edate" value="End Date"></p:outputLabel>
+                         <p:calendar  pattern="dd-MM-yyyy" id="enddate"> 
+                         </p:calendar>
+                         
+                         <p:outputLabel id="cdate" value="Task Completion Date"></p:outputLabel>
+                         <p:calendar  pattern="dd-MM-yyyy" id="completiondate"> 
+                         </p:calendar>
+                         
+                     </p:panelGrid>
+                    
+                       <p:panelGrid columns="8" style="margin-top:20px">
+                         <f:facet name="header">  
+                             Task Status
+                         </f:facet>
+                           
+                           <p:outputLabel id="tsts" value="Task Status"></p:outputLabel>
+                           <p:inputText id="tstsdesc" value="In Process" required="true"/>
+                           
+                           
+                           <p:selectOneMenu value="Forward to" required="true">
+                               <f:selectItem itemLabel="Select IT Person" itemValue="" />
+                               <f:selectItem itemLabel="Nadeem" itemValue="N" />
+                               <f:selectItem itemLabel="Javvad" itemValue="J" />
+                               <f:selectItem itemLabel="Mazhar" itemValue="M" />              
+                               <f:selectItem itemLabel="Burhan" itemValue="B" />              
+                           </p:selectOneMenu>
+                         
+                       </p:panelGrid>
+                    
+                     
+                    <h:panelGrid columns="3">
+
+                        <p:commandButton id="insert" value="Assign Task" update="@form"/>                 
+                    </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
